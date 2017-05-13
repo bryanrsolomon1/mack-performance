@@ -7,5 +7,28 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "2.18.x",
+    "buffer-to-vinyl": "1.1.x",
+    "del": "2.2.x",
+    "event-stream": "3.3.x",
+    "gulp": "3.9.x",
+    "gulp-angular-filesort": "1.1.x",
+    "gulp-clean-css": "3.2.x",
+    "gulp-concat": "2.6.x",
+    "gulp-htmlhint": "0.3.x",
+    "gulp-htmlmin": "3.0.x",
+    "gulp-inject": "4.2.x",
+    "gulp-jshint": "2.0.x",
+    "gulp-ng-annotate": "2.0.x",
+    "gulp-ng-config": "1.4.x",
+    "gulp-ng-html2js": "0.2.x",
+    "gulp-rename": "1.2.x",
+    "gulp-uglify": "2.1.x",
+    "gulp-watch": "4.3.x",
+    "jshint-stylish": "2.2.x",
+    "q": "1.5.x",
+    "wiredep": "4.0.x"
+  }
 }
