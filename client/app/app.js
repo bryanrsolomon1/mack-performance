@@ -26,8 +26,8 @@
                  * 
                  * See ngIdle 3rd party library online for API information
                  */
-                IdleProvider.idle(Number(LOGIN_TIMEOUT_MIN) * 60);
-                IdleProvider.timeout(LOGOUT_WARNING_SECONDS);
+//                IdleProvider.idle(Number(LOGIN_TIMEOUT_MIN) * 60);
+//                IdleProvider.timeout(LOGOUT_WARNING_SECONDS);
                 
                 /** TODO: can use this libarary to send keepAlive heartbeats to the server. Need to research their
                  * API and develop this logic
@@ -35,38 +35,39 @@
                 //KeepaliveProvider.interval(10);
 
             })
-        .run(function($rootScope, AuthFactory, $state, $mdDialog, LOGIN_STATE){
-
-            /** this badboy is what prevents users from navigating to routes when they are not
-             * authenticated/authorized
-             */
-            //to start: listen for this event thrown by uiRouter on any state change
-            $rootScope.$on('$stateChangeStart', function(event, next){
-                // if the state change is to the login page, don't do anything. Anyone can always go to the login page
-                if(next.name !== LOGIN_STATE) {
-                    //okay not to login page, well let's collect the state they are trying to navigate to's
-                    // authorized roles list (configured in the routes files under the data property)
-                    var authorizedRoles = next.data.authorizedRoles;
-                    // using the roles: is the user authorized?
-                    if(!AuthFactory.isAuthorized(authorizedRoles)) {
-                        // nope they arent, prevent the state change!
-                        event.preventDefault();
-                        // okay security concern thwarted. Now, are they even logged in?
-                        if(AuthFactory.isAuthenticated()) {
-                            // Yes they are logged in, the user is just not allowed here. Let them know
-                            $mdDialog.show({
-                                               templateUrl: "app/components/userNotAuthorizedDialog/userNotAuthorizedDialog.html",
-                                               controller: "UserNotAuthorizedDialogCtrl",
-                                               controllerAs: "UserNot"
-                                           });
-                        } else {
-                            // user is not logged in, send them to login page (if they're not already there)
-                            if($state.$current.name !== (LOGIN_STATE)) {
-                                $state.go(LOGIN_STATE);
-                            }
-                        }
-                    }
-                }
-            });
-        });
+//        .run(function($rootScope, AuthFactory, $state, $mdDialog, LOGIN_STATE){
+//
+//            /** this badboy is what prevents users from navigating to routes when they are not
+//             * authenticated/authorized
+//             */
+//            //to start: listen for this event thrown by uiRouter on any state change
+//            $rootScope.$on('$stateChangeStart', function(event, next){
+//                // if the state change is to the login page, don't do anything. Anyone can always go to the login page
+//                if(next.name !== LOGIN_STATE) {
+//                    //okay not to login page, well let's collect the state they are trying to navigate to's
+//                    // authorized roles list (configured in the routes files under the data property)
+//                    var authorizedRoles = next.data.authorizedRoles;
+//                    // using the roles: is the user authorized?
+//                    if(!AuthFactory.isAuthorized(authorizedRoles)) {
+//                        // nope they arent, prevent the state change!
+//                        event.preventDefault();
+//                        // okay security concern thwarted. Now, are they even logged in?
+//                        if(AuthFactory.isAuthenticated()) {
+//                            // Yes they are logged in, the user is just not allowed here. Let them know
+//                            $mdDialog.show({
+//                                               templateUrl: "app/components/userNotAuthorizedDialog/userNotAuthorizedDialog.html",
+//                                               controller: "UserNotAuthorizedDialogCtrl",
+//                                               controllerAs: "UserNot"
+//                                           });
+//                        } else {
+//                            // user is not logged in, send them to login page (if they're not already there)
+//                            if($state.$current.name !== (LOGIN_STATE)) {
+//                                $state.go(LOGIN_STATE);
+//                            }
+//                        }
+//                    }
+//                }
+//            });
+//        })
+    ;
 })();

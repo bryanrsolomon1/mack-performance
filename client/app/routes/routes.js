@@ -13,8 +13,9 @@
 (function(){
     "use strict";
 
-    function Routes($urlRouterProvider, $stateProvider){
-        $urlRouterProvider.otherwise("/map");
+    function Routes($urlRouterProvider, $stateProvider, STATES){
+        
+        $urlRouterProvider.otherwise("/home");
 
         $stateProvider
             .state("root", {
@@ -23,26 +24,26 @@
                 templateUrl: "app/components/root/root.html",
                 controller: "RootCtrl as Root"
             })
-            .state("root.login", {
-                url: "login",
-                views: {
-                    page: {
-                        templateUrl: "app/components/login/login.html",
-                        controller: "LoginCtrl as Login"
-                    }
-                },
-                params: {
-                    alertMessage: null
-                },
-                onEnter: function(Session, Idle) {
-                    angular.element(document).find("body").addClass("login-background");
-                    Session.destroy();
-                    Idle.unwatch();
-                },
-                onExit: function() {
-                    angular.element(document).find("body").removeClass("login-background");
-                }
-            })
+//            .state("root.login", {
+//                url: "login",
+//                views: {
+//                    page: {
+//                        templateUrl: "app/components/login/login.html",
+//                        controller: "LoginCtrl as Login"
+//                    }
+//                },
+//                params: {
+//                    alertMessage: null
+//                },
+//                onEnter: function(Session, Idle) {
+//                    angular.element(document).find("body").addClass("login-background");
+//                    Session.destroy();
+//                    Idle.unwatch();
+//                },
+//                onExit: function() {
+//                    angular.element(document).find("body").removeClass("login-background");
+//                }
+//            })
             .state("root.main", {                abstract: true,
                 views: {
                     page: {
@@ -69,7 +70,24 @@
                     }
                 }
             })
-        ;
+            .state(STATES.HOME, {
+                url: "home",
+                templateUrl: "app/components/home/home.html",
+                controller: "HomeCtrl as Home"
+//                data: {
+//                    authorizedRoles: [USER_ROLES.ADMIN, USER_ROLES.EDITOR]
+//                },
+//                onEnter: function(PageHeaderFactory, VCX_DEVICES_CONSTANTS) {
+//                    PageHeaderFactory.setPageHeader(VCX_DEVICES_CONSTANTS.PAGE_HEADER);
+//                    PageHeaderFactory.setPageHelpContents(VCX_DEVICES_CONSTANTS.PAGE_HEADER,
+//                    VCX_DEVICES_CONSTANTS.HELP_TEMPLATE_URL);
+//                }
+            })
+            .state(STATES.BLOG, {
+                url: "blog",
+                templateUrl: "app/components/blog/blog.html",
+                controller: "BlogCtrl as Blog"
+            });
     }
 
     angular.module('DCX')

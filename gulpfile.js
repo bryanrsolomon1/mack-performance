@@ -12,6 +12,7 @@ var del = require("del");
 var es = require("event-stream");
 var configGenerator = require("./config");
 var b2v = require("buffer-to-vinyl");
+var print = require("gulp-print");
 
 var watch, browserSync, config, htmlhint, jshint, stylish, htmlmin, ngHtml2js,
     cleanCss, uglify, concat;
@@ -300,7 +301,7 @@ function configOrExit() {
     if (Object.keys(config).length === 0) {
         console.error("\n\n/////////////////////////////////////////////////////////////////////////////////\n\n" +
             "You are missing a local.env.json file for application configuration! " +
-            "Please run \"gulp config\" to generate one. -KG" +
+            "Please run \"gulp config\" to generate one. -Bsolo" +
             "\n\n/////////////////////////////////////////////////////////////////////////////////\n");
         process.exit(1);
     }
