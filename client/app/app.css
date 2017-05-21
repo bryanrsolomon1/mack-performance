@@ -13,7 +13,7 @@ html, body {
 
 /* set the font for the entire app */
 body button, input, select, textarea, table, td, tr, span {
-    font-family: "lato", Helvetica, Arial, sans-serif;
+    font-family: "Hind", sans-serif;
     text-transform: none;
 }
 

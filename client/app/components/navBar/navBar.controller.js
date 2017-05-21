@@ -1,14 +1,19 @@
 (function(){
     "use strict";
 
-    function NavBarCtrl(STATES, Session){
+    function NavBarCtrl(STATES, $state){
 
         var self = this;
 
         self.navigators = navigators();
-        self.signup = signup;
+        self.select = select;
         self.selectedNavigator = calculateSelected();
 
+        function select(navigator) {
+            self.selectedNavigator = navigator;
+            $state.go(navigator.state);
+        }
+        
         function navigators(){
             return [
                 { name: "home",
@@ -16,16 +21,19 @@
                 },
                 { name: "blog",
                   state: STATES.BLOG
+                },
+                { name: "login",
+                    state: STATES.LOGIN
                 }
             ];
         }
         
         function calculateSelected() {
-            
-        }
-        
-        function signup() {
-            
+            self.navigators.forEach(function(navigator) {
+                if (navigator.state === $state.current.name) {
+                    self.selectedNavigator = navigator;
+                }
+            })
         }
     }
 

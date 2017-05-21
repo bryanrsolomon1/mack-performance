@@ -1,16 +1,11 @@
-/*
-#navbar .navbar-text {
-    margin-left: 20px;
-    font-size: 16px;
-}
-
-#navbar span {
-    font-size: 16px;
-}
-*/
-
 #mack-name {
     font-size: 26px;
+    color: #ffcb2f;
+    font-weight: bold;
+}
+
+#navbar .md-toolbar-tools {
+    background-color: white;
 }
 
 #navbar .navigator-item {
@@ -18,17 +13,26 @@
     padding: 0 15px;
     height: 100%;
     text-align: center;
+    color: black;
+    transform: skewX(-20deg);
+    border-right: #ffcb2f solid 1px;
 }
 
 #navbar .navigator-item:hover {
-    color: black;
-    background: yellow;
+    color: #ffcb2f;
+}
+
+#navbar .navigator-item.active {
+    border-top: solid #ffcb2f 5px;
 }
 
 #navbar .navigator-name {
     text-transform: uppercase;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
+    font-size: 12px;
+    padding: 25px 10px;
+    transform: skewX(20deg);
+}
+
+#navbar .navigator-item.active .navigator-name {
+    padding-top: 20px;
 }

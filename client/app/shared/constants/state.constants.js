@@ -7,7 +7,7 @@
     
     angular.module("DCX")
         .constant("STATES", {
-                LOGIN: "login",
+                LOGIN: body + ".login",
                 HOME: body + ".home",
                 BLOG: body + ".blog"
             });
