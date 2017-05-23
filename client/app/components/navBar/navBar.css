@@ -15,7 +15,7 @@
     text-align: center;
     color: black;
     transform: skewX(-20deg);
-    border-right: #ffcb2f solid 1px;
+    border-right: black solid 1px;
 }
 
 #navbar .navigator-item:hover {
@@ -31,6 +31,7 @@
     font-size: 12px;
     padding: 25px 10px;
     transform: skewX(20deg);
+    outline: none;
 }
 
 #navbar .navigator-item.active .navigator-name {

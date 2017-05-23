@@ -4,4 +4,34 @@
     background: url("../../../assets/img/klink_plank_cropped.jpeg") no-repeat 0% 0%, linear-gradient(to right, grey, black); /* W3C */
     background-blend-mode: darken;
     min-height: 150px;
+
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+}
+
+#intro-message {
+    transform: translateY(50%);
+}
+
+#fresh-content-title {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#fresh-content-paragraph {
+    font-size: 16px;
+}
+
+#email-input {
+    border-radius: 3px;
+}
+
+#who-is-title {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+#who-is-paragraph {
+    font-size: 18px;
 }
