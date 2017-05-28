@@ -1,0 +1,37 @@
+#blog {
+}
+
+#blog-posts-container {
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#blog .blog-post {
+    margin-top: 30px;
+}
+
+#blog .post-title {
+    text-align: center;
+    font-family: "Mensch","league-gothic","League Gothic";
+/*    font-weight: 600;*/
+    font-size: 60px;
+}
+
+#blog .post-paragraph {
+    max-height: 300px;
+    overflow-y: hidden;
+}
+
+#blog .summary-bar {
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+    font-size: 14px;
+    background-color: #f2eeee;
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+#blog .read-more:visited {
+    color: black;
+}

@@ -286,11 +286,6 @@ gulp.task("set-env-dev", function () {
     return configOrExit();
 });
 
-gulp.task("set-env-itg", function () {
-    process.env.NODE_ENV = "integration";
-    return configOrExit();
-});
-
 gulp.task("set-env-pro", function () {
     process.env.NODE_ENV = "production";
     return configOrExit();
@@ -348,8 +343,6 @@ gulp.task("watch-index-dev", ["built-index-dev"], function () {
 
 /* cleans and builds a complete dev environment */
 gulp.task("build-dev", ["set-env-dev", "clean-dev"], pipes.builtAppDev);
-
-gulp.task("build-itg", ["set-env-itg", "set-deps-minification", "clean-pro"], pipes.builtAppPro);
 
 gulp.task("build-pro", ["set-env-pro", "set-deps-minification", "clean-pro"], pipes.builtAppPro);
 
@@ -416,7 +409,7 @@ gulp.task("serve", ["set-deps-serve", "build-dev"], function () {
     });
 });
 
-gulp.task("serve-itg", ["set-deps-serve", "build-itg"], function () {
+gulp.task("serve-pro", ["set-deps-serve", "build-pro"], function () {
     browserSync.init({
         server: {
             baseDir: config.gulp.dist

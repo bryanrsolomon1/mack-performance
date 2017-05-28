@@ -8,9 +8,8 @@
     
     angular.module("DCX")
         .constant("ENVIRONMENT_TYPES", {
-            DEV: "development",
-            ITG: "integration",
-            PRO: "production"
+            BETA: "beta",
+            PROD: "prod"
         });
     
 })();

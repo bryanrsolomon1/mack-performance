@@ -1,0 +1,50 @@
+.slug-background {
+    background-color: #f8f2f2;
+}
+
+/* when on the slug page, body tag needs this bg color, and element with id #page needs this bg color */
+body.slug-background #page {
+    background-color: #f8f2f2;
+}
+
+#slug-container {
+    max-width: 70%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#slug .blog-post {
+    margin-top: 30px;
+}
+
+#slug .post-title {
+    text-align: center;
+    font-family: "Mensch","league-gothic","League Gothic";
+/*    font-weight: 600;*/
+    font-size: 60px;
+}
+
+#slug .share-bar {
+    margin: 10px 0;
+}
+
+#slug .share-bar span {
+    font-size: 0.85em;
+    color: #807373;
+    font-family: "Arial";
+    text-transform: uppercase;
+}
+
+#slug .share-bar i {
+    padding: 10px;
+    border-radius: 3px;
+}
+
+#slug .share-bar i:hover {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+#slug .post-paragraph {
+}

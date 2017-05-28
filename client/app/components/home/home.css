@@ -12,6 +12,7 @@
 
 #intro-message {
     transform: translateY(50%);
+    padding-right: 10px;
 }
 
 #fresh-content-title {
@@ -27,6 +28,11 @@
     border-radius: 3px;
 }
 
+#the-latest {
+    font-size: 30px;
+    font-weight: bold;
+}
+
 #who-is-title {
     font-size: 60px;
     font-weight: bold;
@@ -34,4 +40,25 @@
 
 #who-is-paragraph {
     font-size: 18px;
+}
+
+#home .recent-post {
+    border: solid 1px black;
+    background-color: rgb(49, 37, 37);
+    color: white;
+}
+
+#home .post-title {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+#home .post-body {
+    max-height: 400px;
+    overflow-y: hidden;
+    font-size: 16px;
+}
+
+#home .post-link:visited {
+    color: white;
 }

@@ -1,4 +1,4 @@
-<div id="home">
+<div id="home" layout="column">
 
     <div id="intro-bar" layout>
         <span flex></span>
@@ -26,6 +26,18 @@
         </div>
     </div>
 
+    <div id="recent-blogs" layout="column" layout-padding>
+        <div id="the-latest">The latest from Mack's blog</div>
+        <div layout>
+            <div class="recent-post" ng-repeat="post in Home.recentPosts" flex="25" layout-margin>
+                <div class="post-title">{{post.title}}</div>
+                <div class="post-date">Posted: {{ post.date | date }}</div>
+                <div class="post-body" ng-bind-html="Home.$sce.trustAsHtml(post.body)"></div>
+                <a class="post-link" href="" ng-click="Home.go(post)">Read the rest <i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+
     <div id="who-is" layout layout-padding>
         <div layout="column">
             <div id="who-is-title">Who is Mack Klink?</div>
@@ -33,7 +45,8 @@
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Nunc condimentum magna vitae ante feugiat scelerisque. Aenean quis ipsum nec elit tincidunt
-                    sollicitudin vel at enim. Vivamus eget fringilla nunc, in maximus magna. Sed ac arcu sit amet sapien pretium
+                    sollicitudin vel at enim. Vivamus eget fringilla nunc, in maximus magna. Sed ac arcu sit amet sapien
+                    pretium
                     faucibus pretium sit amet mi.x
                 </p>
                 <p>

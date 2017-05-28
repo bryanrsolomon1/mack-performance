@@ -89,10 +89,37 @@
                 templateUrl: "app/components/blog/blog.html",
                 controller: "BlogCtrl as Blog"
             })
+            .state(STATES.BLOG_SLUG, {
+                url: "blog/:slug/:id",
+                templateUrl: "app/components/blog/slug/slug.html",
+                controller: "SlugCtrl as Slug",
+                params: { post: null },
+                onEnter: function(){
+                     angular.element(document).find("body").addClass("slug-background");
+                  },
+                onExit: function(){
+                    angular.element(document).find("body").removeClass("slug-background");
+                }
+            })
             .state(STATES.LOGIN, {
                 url: "login",
                 templateUrl: "app/components/login/login.html",
                 controller: "LoginCtrl as Login"
+            })
+            .state(STATES.TRAIN_WITH_ME, {
+                url: "trainWithMe",
+                templateUrl: "app/components/trainWithMe/trainWithMe.html",
+                controller: "TrainWithMeCtrl as TrainWithMe"
+            })
+            .state(STATES.TRAINER, {
+                url: "trainer/:trainerId",
+                templateUrl: "app/components/trainer/trainer.html",
+                controller: "TrainerCtrl as Trainer"
+            })
+            .state(STATES.CLIENT, {
+                url: "client/:clientId",
+                templateUrl: "app/components/client/client.html",
+                controller: "ClientCtrl as Client"
             });
     }
 

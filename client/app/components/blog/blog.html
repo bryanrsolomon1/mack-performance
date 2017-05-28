@@ -1,1 +1,13 @@
-Hello from blog
+<div id="blog" layout="column" layout-padding>
+    <div id="blog-posts-container">
+        <div class="blog-post" ng-repeat="post in Blog.posts">
+            <div class="post-title">{{ post.title }}</div>
+            <div class="post-paragraph" ng-bind-html="Blog.$sce.trustAsHtml(post.body)"></div>
+            <div class="summary-bar" layout="row">
+                <span class="post-date">{{ post.date }}</span>
+                <span flex></span>
+                <a class="read-more" ng-click="Blog.go(post)" href="">Read this post <i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

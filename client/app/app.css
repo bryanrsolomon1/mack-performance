@@ -17,6 +17,10 @@ body button, input, select, textarea, table, td, tr, span {
     text-transform: none;
 }
 
+a:link {
+    text-decoration: none;
+}
+
 /* this div is the top level div and exists in index.html. Setting position to relative here allows us to set the
 footer to the bottom of the page using position:absolute within this wrapper
 */
@@ -72,4 +76,11 @@ correctly these classes will do the majority of the heavy lifting. See gateways 
 .header-bar md-input-container {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+@font-face {
+    font-family: 'Mensch';
+    src: url('../assets/fonts/mensch-inline-wf.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
 }

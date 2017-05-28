@@ -2,8 +2,8 @@
     <div class="md-toolbar-tools" layout="row">
         <span id="mack-name">Mack Klink</span>
         <span flex></span>
-        <div class="navigator-item" ng-class="{active : NavBar.selectedNavigator === navigator }" ng-repeat="navigator in NavBar.navigators">
-            <div class="navigator-name" ng-click="NavBar.select(navigator)">{{ navigator.name }}</div>
+        <div class="navigator-item" ng-class="{active : NavBar.selectedNavigator === navigator }" ng-repeat="navigator in NavBar.navigators" ng-click="NavBar.select(navigator)">
+            <div class="navigator-name">{{ navigator.name }}</div>
         </div>
     </div>
 </md-toolbar>

@@ -1,40 +1,21 @@
 (function(){
     "use strict";
 
-    function NavBarCtrl(STATES, $state){
+    function NavBarCtrl($state, Navigator, $scope){
 
         var self = this;
 
-        self.navigators = navigators();
+        self.navigators = Navigator.navigators;
         self.select = select;
-        self.selectedNavigator = calculateSelected();
+        self.selectedNavigator = Navigator.selectedNavigator;
 
         function select(navigator) {
-            self.selectedNavigator = navigator;
             $state.go(navigator.state);
         }
         
-        function navigators(){
-            return [
-                { name: "home",
-                  state: STATES.HOME
-                },
-                { name: "blog",
-                  state: STATES.BLOG
-                },
-                { name: "login",
-                    state: STATES.LOGIN
-                }
-            ];
-        }
-        
-        function calculateSelected() {
-            self.navigators.forEach(function(navigator) {
-                if (navigator.state === $state.current.name) {
-                    self.selectedNavigator = navigator;
-                }
-            })
-        }
+        $scope.$watch(function() { return Navigator.selectedNavigator; }, function (newValue, oldValue, scope) {
+            self.selectedNavigator = newValue;
+        });
     }
 
     angular.module('DCX')

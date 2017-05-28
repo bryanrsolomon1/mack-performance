@@ -1,0 +1,14 @@
+<div id="slug" class="slug-background">
+    <div id="slug-container">
+        <div class="blog-post">
+            <div class="post-title">{{ Slug.post.title }}</div>
+            <div class="share-bar">
+                <span>Share this:</span>
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-google-plus"></i>
+            </div>
+            <div class="post-paragraph" ng-bind-html="Slug.$sce.trustAsHtml(Slug.post.body)"></div>
+        </div>
+    </div>
+</div>
