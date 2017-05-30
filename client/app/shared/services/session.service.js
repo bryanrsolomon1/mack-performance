@@ -17,7 +17,7 @@
         };
     }
 
-    angular.module("DCX")
+    angular.module("mack")
            .service("Session", Session);
 
 })();

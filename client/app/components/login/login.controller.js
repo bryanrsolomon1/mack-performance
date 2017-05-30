@@ -20,16 +20,16 @@
          * set in the negative promise handler function in case of error.
          */
         function submit(newUser){
-            AuthFactory.login(newUser.username, newUser.password)
-                       .then(function(){
-                           // $state.go(ADMIN_STATES.MAP);
-                       }, function(errMessage) {
-                           self.alertMessage = errMessage;
-                       });
+//            AuthFactory.login(newUser.username, newUser.password)
+//                       .then(function(){
+//                           // $state.go(ADMIN_STATES.MAP);
+//                       }, function(errMessage) {
+//                           self.alertMessage = errMessage;
+//                       });
         }
     }
 
-    angular.module("DCX")
+    angular.module("mack")
            .controller("LoginCtrl", LoginCtrl);
 
 })();

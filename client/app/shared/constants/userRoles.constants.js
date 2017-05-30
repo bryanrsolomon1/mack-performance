@@ -2,7 +2,7 @@
 (function(){
     "use strict";
 
-    angular.module("DCX")
+    angular.module("mack")
            .constant("USER_ROLES", {
                ADMIN: "admin",
                EDITOR: "editor",

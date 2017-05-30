@@ -123,7 +123,7 @@
             });
     }
 
-    angular.module('DCX')
+    angular.module("mack")
         .config(Routes);
 
 })();

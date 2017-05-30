@@ -35,7 +35,7 @@
         ];
     }
 
-    angular.module("DCX")
+    angular.module("mack")
            .service("Navigator", Navigator);
 
 })();

@@ -37,6 +37,6 @@
         }
     }
 
-    angular.module('DCX').factory('PageHeaderFactory', PageHeaderFactory);
+    angular.module('mack').factory('PageHeaderFactory', PageHeaderFactory);
 
 })();

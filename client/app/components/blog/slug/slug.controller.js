@@ -16,6 +16,6 @@
         self.$sce = $sce;
     }
     
-    angular.module("DCX").controller("SlugCtrl", SlugCtrl);
+    angular.module("mack").controller("SlugCtrl", SlugCtrl);
     
 })();

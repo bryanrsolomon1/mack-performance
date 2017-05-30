@@ -4,6 +4,6 @@
         
     }
     
-    angular.module("DCX").controller("TrainWithMeCtrl", TrainWithMeCtrl);
+    angular.module("mack").controller("TrainWithMeCtrl", TrainWithMeCtrl);
     
 })();

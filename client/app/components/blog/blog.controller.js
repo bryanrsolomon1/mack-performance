@@ -17,6 +17,6 @@
         }
     }
     
-    angular.module("DCX").controller("BlogCtrl", BlogCtrl);
+    angular.module("mack").controller("BlogCtrl", BlogCtrl);
     
 })();

@@ -6,7 +6,7 @@
 (function() {
     "use strict";
     
-    angular.module("DCX")
+    angular.module("mack")
         .constant("ENVIRONMENT_TYPES", {
             BETA: "beta",
             PROD: "prod"

@@ -3,7 +3,7 @@
 
     // Declare app level module which depends on the 3rd party libraries
     angular
-        .module('DCX', [
+        .module('mack', [
             'ui.router',
             'ngMaterial',
             'ngMessages',

@@ -11,7 +11,7 @@
         self.logoutWarningSeconds = LOGOUT_WARNING_SECONDS;
     }
 
-    angular.module("DCX")
+    angular.module("mack")
            .controller("RootCtrl", RootCtrl);
 
 })();

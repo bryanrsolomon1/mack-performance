@@ -1,6 +1,6 @@
 (function() {
     
-    function HomeCtrl(Tumblr, $sce, $state, STATES) {
+    function HomeCtrl(Tumblr, $sce, $state, STATES, Client) {
 
         var self = this;
 
@@ -15,12 +15,19 @@
         });
         
         self.go = go;
+        self.signUp = signUp;
         
         function go(post) {
             $state.go(STATES.BLOG_SLUG, {"slug" : post.slug, "id" : post.id, "post" : post});
         }
+        
+        function signUp(newUser) {
+            Client.signUp(newUser).then(function(response) {
+                // TODO
+            })
+        }
     }
     
-    angular.module("DCX").controller("HomeCtrl", HomeCtrl);
+    angular.module("mack").controller("HomeCtrl", HomeCtrl);
     
 })();

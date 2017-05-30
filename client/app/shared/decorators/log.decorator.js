@@ -144,6 +144,6 @@
 //         return $delegate;
 //     }
 //
-//     angular.module("DCX")
+//     angular.module("mack")
 //            .decorator("$log", LogDecorator);
 // })();

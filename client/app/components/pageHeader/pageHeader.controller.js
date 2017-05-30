@@ -41,7 +41,7 @@
         }
     }
 
-    angular.module('DCX')
+    angular.module('mack')
            .controller('PageHeaderCtrl', PageHeaderCtrl);
 
 })();

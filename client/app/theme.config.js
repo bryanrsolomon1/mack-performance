@@ -21,6 +21,6 @@
             .accentPalette("grey");
     }
 
-    angular.module('DCX').config(ThemeConfig);
+    angular.module('mack').config(ThemeConfig);
 
 })();

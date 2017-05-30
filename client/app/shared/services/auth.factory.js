@@ -16,19 +16,19 @@
         };
 
         function login(username, password){
-            //return $http
-            //    .post({
-            //              url: API_SERVER + '/login',
-            //              params: {
-            //                  username: username,
-            //                  password: password
-            //              }
-            //          })
-            //    .then(function(response){
-            //        Session.create(response.data.id, response.data.user.id,
-            //                       response.data.user.role);
-            //        return response.data.user;
-            //      });
+            return $http
+                .post({
+                          url: API_SERVER + '/login',
+                          params: {
+                              username: username,
+                              password: password
+                          }
+                      })
+                .then(function(response){
+                    Session.create(response.data.id, response.data.user.id,
+                                   response.data.user.role);
+                    return response.data.user;
+                  });
             var deferred = $q.defer();
             if(username !== "kristina") {
                 Session.create(Math.random(), username,
@@ -62,7 +62,7 @@
 
     }
 
-    angular.module("DCX")
+    angular.module("mack")
            .factory("AuthFactory", AuthFactory);
 
 })();

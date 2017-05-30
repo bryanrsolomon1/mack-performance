@@ -5,7 +5,7 @@
     var main = root + ".main";
     var body = main + ".body";
 
-    angular.module("DCX")
+    angular.module("mack")
         .constant("STATES", {
             LOGIN: body + ".login",
             HOME: body + ".home",

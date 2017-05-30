@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    function Tumblr($http, $cacheFactory, $q, CACHE_NAMES, ENVIRONMENT) {
+    function Tumblr($http, $cacheFactory, $q, CACHE_NAMES, API_SERVER, ENVIRONMENT, ENVIRONMENT_TYPES) {
 
         var blogsCache = $cacheFactory(CACHE_NAMES.BLOG);
 
@@ -165,6 +165,11 @@
         }
         
         function getPosts(limit, page) {
+            if (ENVIRONMENT === ENVIRONMENT_TYPES.BETA) {
+                return $q(function(resolve) {
+                    resolve(testRecentPostsData);
+                });
+            } else {
             var params = {};
             if (limit) {
                 params.limit = limit;
@@ -173,46 +178,36 @@
                 params.offset = 8 * page;
             }
              return $http({
-                 url: "https://api.mackperformance.com/"  + ENVIRONMENT + "/blog/posts",
+                 url: API_SERVER + "/blog/posts",
                  params: params,
                  cache: blogsCache
              }).then(function (response) {
-//                 console.log(JSON.stringify(response.data));
                  return response.data;
-                 // this callback will be called asynchronously
-                 // when the response is available
              }, function (err) {
                  console.error(err);
-                 // called asynchronously if an error occurs
-                 // or server returns response with an error status.
              });
-//            return $q(function(resolve) {
-//                 resolve(testRecentPostsData);
-//            });
+            }
         }
         
         function getPost(id) {
+            if (ENVIRONMENT === ENVIRONMENT_TYPES.BETA) {
+                return $q(function(resolve) {
+                    resolve(testRecentPostsData);
+                });
+            } else {
              return $http({
-                 url: "https://api.mackperformance.com/" + ENVIRONMENT + "/blog/posts",
+                 url: API_SERVER + "/blog/posts",
                  params: {"id" : id},
                  cache: blogsCache
              }).then(function (response) {
-                 console.log(response.data);
                  return response.data;
-                 // this callback will be called asynchronously
-                 // when the response is available
              }, function (err) {
                  console.error(err);
-                 // called asynchronously if an error occurs
-                 // or server returns response with an error status.
              });
-
-            return $q(function(resolve) {
-                 resolve(testRecentPostsData);
-            });
+            }
         }
     }
 
-    angular.module("DCX").factory("Tumblr", Tumblr);
+    angular.module("mack").factory("Tumblr", Tumblr);
 
 })();

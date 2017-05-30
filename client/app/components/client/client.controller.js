@@ -4,6 +4,6 @@
         
     }
     
-    angular.module("DCX").controller("ClientCtrl", ClientCtrl);
+    angular.module("mack").controller("ClientCtrl", ClientCtrl);
     
 })();

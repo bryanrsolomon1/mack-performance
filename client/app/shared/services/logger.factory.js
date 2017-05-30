@@ -41,6 +41,6 @@
     }
 
     angular
-        .module("DCX")
+        .module("mack")
         .factory("Logger", Logger);
 })();
