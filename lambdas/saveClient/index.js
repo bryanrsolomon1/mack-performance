@@ -1,5 +1,4 @@
 var AWS = require("aws-sdk");
-var uuid = require("uuid");
 
 exports.handler = (event, context, callback) => {
 
@@ -9,7 +8,6 @@ exports.handler = (event, context, callback) => {
     
     var queryParams = {
         TableName : "Client",
-        IndexName : "email-index",
         KeyConditionExpression: "#email = :email",
         ExpressionAttributeNames:{
             "#email" : "email"
@@ -18,7 +16,7 @@ exports.handler = (event, context, callback) => {
             ":email" : newUser.email
         }
     };
-
+    
     docClient.query(queryParams, function(err, data) {
         if (err) {
             console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
@@ -27,14 +25,21 @@ exports.handler = (event, context, callback) => {
             if (data.Items.length > 0) {
                 callback(new Error("A user already exists with that email address"));
             } else {
+                
+                var doc = {
+                    "email": newUser.email
+                };
+
+                if (newUser.firstName) {
+                    doc.firstName = newUser.firstName;
+                }
+                if (newUser.lastName) {
+                    doc.lastName = newUser.lastName;
+                }
+
                 var saveParams = {
                     TableName: "Client",
-                    Item:{
-                        "id": uuid.v1(),
-                        "firstName": newUser.firstName,
-                        "lastName": newUser.lastName,
-                        "email": newUser.email
-                    }
+                    Item: doc
                 };
     
                 docClient.put(saveParams, function(err, data) {

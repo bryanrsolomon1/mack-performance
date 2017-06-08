@@ -1,22 +1,31 @@
 (function() {
     "use strict";
     
-    function Client($http, API_SERVER, $cacheFactory) {
+    function Client($http, API_SERVER, $cacheFactory, CACHE_NAMES, $q, ENVIRONMENT, ENVIRONMENT_TYPES) {
         
         var clientCache = $cacheFactory(CACHE_NAMES.CLIENT);
         
-        return {};
+        return {
+            signUp: signUp
+        };
         
         function signUp(newUser) {
-            return $http({
-                 url: API_SERVER + "/client",
-                 params: newUser,
-                 cache: clientCache
-             }).then(function (response) {
-                 return response.data;
-             }, function (err) {
-                 console.error(err);
-             });
+            if (ENVIRONMENT === ENVIRONMENT_TYPES.BETA) {
+                return $q(function(resolve) {
+                    resolve({email: "bsolo@test.com"});
+                });
+            } else {
+                return $http({
+                     method: "POST",
+                     url: API_SERVER + "/client",
+                     data: newUser,
+                     cache: clientCache
+                 }).then(function (response) {
+                     return response.data;
+                 }, function (err) {
+                     console.error(err);
+                 });
+            }
         }
     }
     

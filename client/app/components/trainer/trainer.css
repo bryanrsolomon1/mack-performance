@@ -1,0 +1,7 @@
+#trainer {
+    min-height: 100%;
+}
+
+#trainer-body {
+    border: solid 1px black;
+}

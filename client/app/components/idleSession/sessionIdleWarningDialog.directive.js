@@ -42,7 +42,7 @@
         };
     }
 
-    angular.module("DCX")
+    angular.module("mack")
            .directive("idleSessionWarningDialog", IdleSessionWarningDialogDirective);
 
 })();

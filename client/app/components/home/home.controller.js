@@ -1,10 +1,11 @@
 (function() {
     
-    function HomeCtrl(Tumblr, $sce, $state, STATES, Client) {
+    function HomeCtrl(Tumblr, $sce, $state, STATES, Client, $mdDialog) {
 
         var self = this;
 
         self.$sce = $sce;
+        self.newUser = {};
         
         Tumblr.getRecentPosts().then(function(blogs) {
             try {
@@ -23,8 +24,10 @@
         
         function signUp(newUser) {
             Client.signUp(newUser).then(function(response) {
-                // TODO
-            })
+                console.log("User saved:", JSON.stringify(newUser));
+            }, function(err) {
+                console.log("Failed:", JSON.stringify(err));
+            });
         }
     }
     

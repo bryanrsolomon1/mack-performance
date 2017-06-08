@@ -76,7 +76,7 @@ pipes.scriptedPartials = function () {
             removeComments: true
         }))
         .pipe(ngHtml2js({
-            moduleName: "DCX",
+            moduleName: "mack",
             declareModule: false,
             prefix: "app/" //"the prefix which should be prepended to the file path to generate
                            // the file url",
@@ -187,7 +187,7 @@ pipes.builtAssets = function () {
 pipes.builtConfig = function () {
     var json = JSON.stringify(configGenerator().client);
     return b2v.stream(new Buffer(json))
-        .pipe(ngConfig("DCX", {
+        .pipe(ngConfig("mack", {
             wrap: "(function () {\n\"use strict\";\nreturn <%= module %>\n})();",
             createModule: false
         }))

@@ -111,7 +111,7 @@
                 templateUrl: "app/components/trainWithMe/trainWithMe.html",
                 controller: "TrainWithMeCtrl as TrainWithMe"
             })
-            .state(STATES.TRAINER, {
+            .state(STATES.TRAINER.MAIN, {
                 url: "trainer/:trainerId",
                 templateUrl: "app/components/trainer/trainer.html",
                 controller: "TrainerCtrl as Trainer"

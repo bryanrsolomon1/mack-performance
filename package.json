@@ -13,6 +13,7 @@
     "buffer-to-vinyl": "1.1.x",
     "del": "2.2.x",
     "event-stream": "3.3.x",
+    "googleapis": "^19.0.0",
     "gulp": "3.9.x",
     "gulp-angular-filesort": "1.1.x",
     "gulp-clean-css": "3.2.x",

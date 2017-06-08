@@ -19,9 +19,9 @@
             <div id="fresh-content-form" layout-padding layout>
                 <md-input-container flex layout>
                     <label>Email Address</label>
-                    <input ng-model="Home.emailInput" type="text" flex id="email-input"/>
+                    <input ng-model="Home.newUser.email" type="text" flex id="email-input"/>
                 </md-input-container>
-                <md-button class="md-primary md-raised" ng-click="Home.signUp()" flex>Join</md-button>
+                <md-button class="md-primary md-raised" ng-click="Home.signUp(Home.newUser)" flex>Join</md-button>
             </div>
         </div>
     </div>

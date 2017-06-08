@@ -1,12 +1,15 @@
 <div id="trainer" layout>
-    <md-sidenav class="md-sidenav-left" md-component-id="trainer-left" md-is-locked-open="$mdMedia('gt-md')"
-                md-whiteframe="4">
+    <md-sidenav class="md-sidenav-left" md-component-id="{{Trainer.sidenavName}}" md-whiteframe="4" md-is-locked-open="true">
 
         <md-content layout-padding>
-            <p hide show-gt-md>
-                Sidenav entry 1
-            </p>
+            <div class="sidenav-item" layout ng-repeat="item in Trainer.sidenavs"
+                 ng-click="Trainer.selectSidenav(item)">
+                <i class="fa" ng-class="item.icon"></i>
+                <div class="sidenav-entry">{{ item.name }}</div>
+            </div>
         </md-content>
 
     </md-sidenav>
+    <div id="trainer-body" ui-view>
+    </div>
 </div>
