@@ -1,7 +1,23 @@
-#trainer {
-    min-height: 100%;
-}
-
 #trainer-body {
     border: solid 1px black;
+}
+
+#trainer-sidenav .filler {
+    background-color: #1d1a1a;
+}
+
+#trainer .sidenav-item {
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #1d1a1a;
+    color: white;
+}
+
+#trainer-sidenav .sidenav-item:hover {
+    opacity: 0.5;
+}
+
+#trainer-sidenav .sidenav-item.active {
+    border-left: solid #3abfe0 5px;
+    padding-left: 10px;
 }

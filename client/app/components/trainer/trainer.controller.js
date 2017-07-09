@@ -9,6 +9,8 @@
         
         self.selectSidenav = selectSidenav;
         
+        selectSidenav(self.sidenavs[0]);
+        
         function selectSidenav(sidenav) {
             self.selectedSidenav = sidenav;
             $state.go(sidenav.state);
@@ -29,7 +31,7 @@
                 {
                     "name": "Clients",
                     "icon": "fa-computer",
-                    "state": STATES.TRAINER.CLIENTS
+                    "state": STATES.TRAINER.CLIENTS.MAIN
                 },
                 {
                     "name": "Exercises",

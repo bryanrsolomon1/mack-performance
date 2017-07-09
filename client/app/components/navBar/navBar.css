@@ -10,13 +10,11 @@
 
 #navbar .navigator-item {
     cursor: pointer;
-/*    padding: 0 15px;*/
     height: 100%;
     text-align: center;
     color: black;
     transform: skewX(-20deg);
     border-right: black solid 1px;
-    outline: none;
 }
 
 #navbar .navigator-item:hover {

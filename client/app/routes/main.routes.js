@@ -67,7 +67,7 @@
                         controller: "PageHeaderCtrl as PageHeader"
                     },
                     body: {
-                        template: "<div ui-view></div>"
+                        template: "<div ui-view flex layout=\"column\"></div>"
                     }
                 }
             })

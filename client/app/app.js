@@ -8,7 +8,9 @@
             'ngMaterial',
             'ngMessages',
             'ngAria',
-            'ngIdle'
+            'ngIdle',
+            'ngAnimate',
+            'dndLists'
         ])
         .config(
             function(ENVIRONMENT, ENVIRONMENT_TYPES, $logProvider, LOGIN_TIMEOUT_MIN, LOGOUT_WARNING_SECONDS){

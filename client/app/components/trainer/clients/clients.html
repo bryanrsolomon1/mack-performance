@@ -1,3 +1,41 @@
-<div id="trainer-clients">
-    Hello from clients
+<div id="trainer-clients" flex>
+    <md-toolbar>
+        <!-- in view initially -->
+        <div class="md-toolbar-tools" ng-hide="Clients.selectedClient" layout>
+            <span flex></span>
+            <md-input-container>
+                <label>Search</label>
+                <input/>
+            </md-input-container>
+        </div>
+        
+        <!-- in view after selection -->
+        <div class="md-toolbar-tools" ng-show="Clients.selectedClient" layout>
+            <md-button ng-click="Clients.deselectClient()">
+                <i class="fa fa-chevron-left"></i>
+                All Clients
+            </md-button>
+            <span flex></span>
+            <img class="user-avatar" ng-src="{{Clients.selectedClient.thumbnailUrl}}"/>
+            <div class="client-list-text selected-client-name">{{ Clients.selectedClient.firstName }} {{ Clients.selectedClient.lastName }}</div>
+        </div>
+    </md-toolbar>
+    
+    <!-- in view initially -->
+    <div layout="column" ng-hide="Clients.selectedClient">
+        <div ng-repeat="client in Clients.clients" layout layout-padding class="client-list-item" ng-click="Clients.selectClient(client)">
+            <img class="user-avatar" ng-src="{{client.thumbnailUrl}}"/>
+            <div class="client-list-text">{{ client.firstName }} {{ client.lastName }}</div>
+            <span flex></span>
+            <i class="fa fa-chevron-right client-list-text"></i>
+        </div>
+    </div>
+    
+    <!-- in view after selection -->
+    <div layout="column" ng-show="Clients.selectedClient" flex>
+        <div class="client-menu-items" layout>
+            <div class="client-menu-item" ng-class="{active : Clients.selectedMenuItem === menu }" ng-repeat="menu in Clients.menuItems" ng-click="Clients.selectMenuItem(menu)">{{menu.name}}</div>
+        </div>
+        <div ui-view></div>
+    </div>
 </div>

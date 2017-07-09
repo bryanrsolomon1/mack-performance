@@ -1,6 +1,6 @@
 (function() {
     
-    function HomeCtrl(Tumblr, $sce, $state, STATES, Client, $mdDialog) {
+    function HomeCtrl(Tumblr, $sce, $state, STATES, Clients, $mdDialog) {
 
         var self = this;
 
@@ -23,7 +23,7 @@
         }
         
         function signUp(newUser) {
-            Client.signUp(newUser).then(function(response) {
+            Clients.signUp(newUser).then(function(response) {
                 console.log("User saved:", JSON.stringify(newUser));
             }, function(err) {
                 console.log("Failed:", JSON.stringify(err));

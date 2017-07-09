@@ -5,6 +5,7 @@
     var main = root + ".main";
     var body = main + ".body";
     var trainer = body + ".trainer";
+    var trainerClients = trainer + ".clients";
 
     angular.module("mack")
         .constant("STATES", {
@@ -18,7 +19,12 @@
                 EXERCISES: trainer + ".exercises",
                 WORKOUTS: trainer + ".workouts",
                 OVERVIEW: trainer + ".overview",
-                CLIENTS: trainer + ".clients",
+                CLIENTS: {
+                    MAIN: trainerClients,
+                    TRAINING_PLAN: trainerClients + ".trainingPlan",
+                    MEAL_PLAN: trainerClients + ".mealPlan",
+                    CALENDAR: trainerClients + ".calendar"
+                },
                 MESSAGES: trainer + ".messages"
             },
             CLIENT: body + ".client"

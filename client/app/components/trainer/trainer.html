@@ -1,15 +1,14 @@
-<div id="trainer" layout>
-    <md-sidenav class="md-sidenav-left" md-component-id="{{Trainer.sidenavName}}" md-whiteframe="4" md-is-locked-open="true">
-
-        <md-content layout-padding>
-            <div class="sidenav-item" layout ng-repeat="item in Trainer.sidenavs"
+<div id="trainer" layout flex>
+    <md-sidenav id="trainer-sidenav" class="md-sidenav-left" md-component-id="{{Trainer.sidenavName}}" 
+                md-is-locked-open="true" flex="15">
+            <div class="sidenav-item" ng-class="{active : Trainer.selectedSidenav === item }" layout 
+                 ng-repeat="item in Trainer.sidenavs"
                  ng-click="Trainer.selectSidenav(item)">
                 <i class="fa" ng-class="item.icon"></i>
                 <div class="sidenav-entry">{{ item.name }}</div>
             </div>
-        </md-content>
-
+            <div class="filler" flex></div>
     </md-sidenav>
-    <div id="trainer-body" ui-view>
+    <div id="trainer-body" ui-view flex layout="column">
     </div>
 </div>

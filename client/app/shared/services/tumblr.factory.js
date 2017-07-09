@@ -4,9 +4,9 @@
 (function () {
     'use strict';
 
-    function Tumblr($http, $cacheFactory, $q, CACHE_NAMES, API_SERVER, ENVIRONMENT, ENVIRONMENT_TYPES) {
+    function Tumblr($http, $cacheFactory, $q, API_SERVER, ENVIRONMENT, ENVIRONMENT_TYPES) {
 
-        var blogsCache = $cacheFactory(CACHE_NAMES.BLOG);
+        var blogsCache = $cacheFactory("blog");
 
         var testRecentPostsData = {
             "meta": {"status": 200, "msg": "OK"},
