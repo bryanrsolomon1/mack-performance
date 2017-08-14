@@ -1,0 +1,74 @@
+<md-dialog id="create-exercise-dialog" layout-padding>
+    
+    <span class="dialog-title">Create a new exercise</span>
+
+    <md-divider style="padding:0"></md-divider>
+
+    <md-dialog-content class="dialog-content">
+        
+        <div class="name" layout>
+            <div class="input-label" flex="20">
+                <div class="input-label-text">Name:</div>
+            </div>
+            <md-input-container flex class="no-errors-spacer">
+                <label>Name</label>
+                <input type="text" ng-model="Create.exercise.name"/>
+            </md-input-container>
+        </div>
+        
+        <div class="description" layout>
+            <div class="input-label" flex="20">
+                <div class="input-label-text">Description:</div>
+            </div>
+            <md-input-container flex class="no-errors-spacer">
+                <label>Description</label>
+                <input type="text" ng-model="Create.exercise.description"/>
+            </md-input-container>
+        </div>
+        
+        <div class="choose-video" layout="column">
+            <span class="create-label">Attach a video:</span>
+            <!-- choose youtube channel -->
+            <md-input-container>
+              <label>Youtube Channel</label>
+              <md-select ng-model="Create.channelId" md-on-close="Create.getPlaylistsByChannelId(Create.channelId)">
+                <md-option ng-value="null"><em>---</em></md-option>
+                <md-option ng-repeat="channel in Create.channels" ng-value="channel.id">
+                  {{channel.name}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            
+            <!-- choose youtube playlist -->
+            <md-input-container>
+              <label>Playlist</label>
+              <md-select ng-model="Create.playlistId" md-on-close="Create.getPlaylistItems(Create.playlistId)" ng-disabled="!Create.channelId">
+                <md-option ng-value="null"><em>---</em></md-option>
+                <md-option ng-repeat="playlist in Create.playlists" ng-value="playlist.id">
+                  {{playlist.snippet.title}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            
+            <!-- choose youtube video -->
+            <md-input-container>
+              <label>Video</label>
+              <md-select ng-model="Create.exercise.videoId" ng-disabled="!Create.playlistId">
+                <md-option ng-value="null"><em>---</em></md-option>
+                <md-option ng-repeat="video in Create.videos" ng-value="video.snippet.resourceId.videoId">
+                  {{video.snippet.title}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            
+        </div>
+        
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row" class="dialog-actions">
+        <span flex></span>
+        <md-button class="md-primary md-raised" ng-click="Create.save(Create.exercise)" ng-disabled="!Create.validExercise(Create.exercise)">Save</md-button>
+        <md-button class="md-warn md-raised" ng-click="Create.cancel()">Cancel</md-button>
+    </md-dialog-actions>
+    
+</md-dialog>

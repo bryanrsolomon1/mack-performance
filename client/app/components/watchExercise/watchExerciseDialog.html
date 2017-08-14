@@ -1,0 +1,17 @@
+<md-dialog id="watch-exercise-dialog" layout-padding>
+
+    <i class="fa fa-times close-dialog" ng-click="Watch.hide()"></i>
+
+    <div layout layout-padding>
+        <div ng-bind-html="Watch.$sce.trustAsHtml(Watch.exercise.player)"></div>
+        <div class="video-details" layout="column" layout-padding>
+            
+            <div class="video-detail-label">Name</div>
+            <div class="video-detail">{{Watch.exercise.name}}</div>
+            
+            <div class="video-detail-label">Description</div>
+            <div class="video-detail">{{Watch.exercise.description}}</div>
+        </div>
+    </div>
+    
+</md-dialog>

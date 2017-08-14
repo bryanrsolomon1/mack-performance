@@ -1,0 +1,7 @@
+#add-client-dialog {
+    min-width: 40%;
+}
+
+#add-client-dialog .dialog-title {
+    font-weight: bold;
+}

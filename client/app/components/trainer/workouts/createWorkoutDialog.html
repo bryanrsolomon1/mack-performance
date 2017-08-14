@@ -1,0 +1,89 @@
+<md-dialog id="create-workout-dialog" layout="column">
+        
+    <div class="dialog-title-bar" layout>
+        <md-input-container class="no-errors-spacer workout-name-container">
+            <label>Workout Name</label>
+            <input ng-model="CW.workout.name" class="workout-name"/>
+        </md-input-container>
+        <span flex></span>
+        <md-button class="md-primary md-raised" ng-click="CW.save(CW.workout)" ng-disabled="!CW.validWorkout(CW.workout)">
+            Save
+        </md-button>
+        <i class="fa fa-times close-dialog fa-2x" ng-click="CW.cancel()"></i>
+    </div>
+
+    <md-dialog-content class="dialog-content" layout flex>
+        
+        <div class="workout" layout="column" flex="30">
+            <div class="workout-description" flex="20" layout>
+                <md-input-container flex>
+                    <label>Workout Description</label>
+                    <textarea ng-model="CW.workout.description"></textarea>
+                </md-input-container>
+            </div>
+            
+            <div class="workout-anatomy" flex="80" layout="column" dnd-list="CW.workout.parts" dnd-allowed-types="['exercise','part']" dnd-drop="CW.partDropCallback(index, item, external, type)">
+                
+                <div class="anatomy-toolbar" layout>
+                    <md-button id="delete" class="toolbar-button" ng-click="CW.doDelete(CW.selectedParts)" ng-disabled="!CW.canDelete(CW.selectedParts)">Delete</md-button>
+                    <span flex></span>
+                    <md-button id="superset" class="toolbar-button" ng-click="CW.superset()" ng-disabled="!CW.canSuperset(CW.selectedParts)">Superset</md-button>
+                    <md-button id="circuit" class="toolbar-button" ng-click="CW.circuit()" ng-disabled="!CW.canCircuit(CW.selectedParts)">Circuit</md-button>
+                    <md-button id="interval" class="toolbar-button" ng-click="CW.interval()" ng-disabled="!CW.canInterval(CW.selectedParts)">Interval</md-button>
+                </div>
+                
+                <div class="anatomy-placeholder" ng-show="CW.workout.parts.length === 0">Drop exercises here to get started!</div>
+                
+                <div class="workout-part" layout="column" ng-repeat="part in CW.workout.parts" dnd-draggable="part" dnd-type="'part'" dnd-effect-allowed="move" dnd-moved="CW.workout.parts.splice($index, 1)">
+                    <div layout class="workout-type-row">
+                        <md-checkbox class="space-taking-hide" flex="5" ng-click="CW.togglePart(part)" ng-show="part.type !== CW.WORKOUTS.TYPES.SET" ng-checked="CW.selectedParts.indexOf(part) !== -1"></md-checkbox>
+                        <div class="part-type">{{part.type}}</div>
+                        <span flex></span>
+                        <input class="multiplier" type="number" flex="10" ng-show="part.type !== CW.WORKOUTS.TYPES.SET" ng-model="part.multiplier"/>
+                        <div ng-switch="part.type" flex="30">
+                            <span class="hidden-x">x</span>
+                            <div ng-switch-when="SUPERSET|CIRCUIT" ng-switch-when-separator="|" flex layout>
+                                <span class="rounds">rounds</span>
+                                <span flex="15"></span>
+                            </div>
+                            <div ng-switch-when="INTERVAL" flex layout>
+                                <span class="rounds">seconds</span>
+                                <span flex="10"></span>
+                            </div>
+                            <div ng-switch-default flex></div>
+                        </div>
+                    </div>
+                    <div ng-repeat="segment in part.segments" layout class="segment">
+                        <md-checkbox flex="5" ng-click="CW.togglePart(part)" ng-show="part.type === CW.WORKOUTS.TYPES.SET" class="space-taking-hide"></md-checkbox>
+                        <img ng-src="{{segment.thumbnailUrl}}" height="24" width="32"/>
+                        <span class="part-name">{{segment.name}}</span>
+                        <span flex></span>
+                        <input class="multiplier" type="number" flex="10" ng-model="part.multiplier" ng-disabled="part.type !== CW.WORKOUTS.TYPES.SET"/>
+                        <span class="x">x</span>
+                        <div class="target" flex="25" layout>
+                            <md-tooltip md-direction="right">
+                                Target(s) e.g. "Till failure with 140lbs"
+                            </md-tooltip>
+                            <input flex ng-model="segment.target"/>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="exercises" flex="70">
+            <div class="exercise-thumbnails" layout layout-padding layout-wrap>
+                <div class="exercise-thumbnail" ng-repeat="exercise in CW.exercises | filter: CW.searchFilter" ng-click="CW.watchVideo(exercise)" layout flex="20" dnd-draggable="exercise" dnd-type="'exercise'" dnd-effect-allowed="move">
+                    <img ng-src="{{exercise.thumbnailUrl}}" height="50" width="50"/>
+                    <div class="thumbnail-description" flex>
+                        <div class="thumbnail-name">{{exercise.name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </md-dialog-content>
+
+    
+</md-dialog>

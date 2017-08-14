@@ -1,0 +1,22 @@
+#watch-exercise-dialog {
+    height: 440px;
+    width: 70%;
+}
+
+#watch-exercise-dialog .video-detail-label {
+    color: #ada6a7;
+    font-weight: bold;
+}
+
+#watch-exercise-dialog .close-dialog {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    color: #ada6a7;
+}
+
+#watch-exercise-dialog iframe {
+    height: 400px;
+    width: 600px;
+}

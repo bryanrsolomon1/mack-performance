@@ -1,0 +1,40 @@
+<md-dialog id="add-client-dialog" layout-padding>
+    
+    <span class="dialog-title">Add new client</span>
+
+    <md-divider style="padding:0;margin-bottom:15px;"></md-divider>
+
+    <md-dialog-content class="dialog-content" layout="column">
+        
+        <md-input-container flex>
+            <label>Email address</label>
+            <input ng-model="Add.client.emailAddress"/>
+        </md-input-container>
+        
+        <md-input-container flex>
+            <label>First name</label>
+            <input ng-model="Add.client.firstName"/>
+        </md-input-container>
+        
+        <md-input-container flex>
+            <label>Last name</label>
+            <input ng-model="Add.client.lastName"/>
+        </md-input-container>
+        
+        <md-input-container flex>
+            <label>Timezone</label>
+            <md-select ng-model="Add.client.timezone">
+                <md-option ng-repeat="tz in Add.timezones" ng-value="tz.momentName">
+                    (GMT{{tz.gmt}}) {{tz.displayText}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row" class="dialog-actions">
+        <span flex></span>
+        <md-button class="md-primary md-raised" ng-click="Add.save(Add.client)" ng-disabled="!Add.validClient(Add.client)">Add and send invite</md-button>
+        <md-button class="md-warn md-raised" ng-click="Add.cancel()">Cancel</md-button>
+    </md-dialog-actions>
+    
+</md-dialog>

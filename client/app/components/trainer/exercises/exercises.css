@@ -1,0 +1,32 @@
+#trainer-exercises .exercise-thumbnails {
+    text-align: center;
+}
+
+#trainer-exercises .exercise-thumbnail {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+#trainer-exercises .exercise-thumbnail:hover {
+    border-radius: 3px;
+    color: deepskyblue;
+    opacity: 1.0;
+}
+
+#trainer-exercises .thumbnail-description {
+    height: 100px;
+    padding: 10%;
+}
+
+#trainer-exercises .thumbnail-name {
+    height: 100px;
+    text-align: center;
+}
+
+#exercises-search .md-errors-spacer {
+    max-height: 0px;
+}
+
+#exercises-search label {
+    color: black;
+}

@@ -1,0 +1,159 @@
+#create-workout-dialog {
+    height: 80%;
+    width: 90%;
+}
+
+#create-workout-dialog .dialog-title-bar {
+    background-color: #353535;
+    color: white;
+    padding: 0 8px;
+}
+
+#create-workout-dialog .dialog-title-bar button {
+    margin: none;
+}
+
+#create-workout-dialog .dialog-title {
+    font-size: 18px;
+    padding-top: 12px;
+}
+
+#create-workout-dialog .workout-name-container label {
+    color: white;
+}
+
+#create-workout-dialog .workout-name {
+    color: white;
+}
+
+#create-workout-dialog .close-dialog {
+    cursor: pointer;
+    padding-top: 6px;
+}
+
+#create-workout-dialog .workout-description {
+    border-bottom: solid 1px black;
+}
+
+#create-workout-dialog .workout-description textarea {
+    resize: none;
+    overflow: scroll;
+    font-size: 11px;
+}
+
+#create-workout-dialog .exercises {
+    border-left: solid 1px black;
+}
+
+#create-workout-dialog .exercise-thumbnails {
+    text-align: center;
+}
+
+#create-workout-dialog .exercise-thumbnail {
+    cursor: move;
+    opacity: 0.7;
+}
+
+#create-workout-dialog .exercise-thumbnail:hover {
+    border-radius: 3px;
+    color: deepskyblue;
+    opacity: 1.0;
+}
+
+#create-workout-dialog .thumbnail-description {
+    height: 50px;
+    padding: 10%;
+}
+
+#create-workout-dialog .thumbnail-name {
+    height: 50px;
+    text-align: center;
+    font-size: 11px;
+}
+
+#create-workout-dialog .anatomy-toolbar {
+    background-color: #f2f2f2;
+    padding: 3px;
+}
+
+#create-workout-dialog .anatomy-toolbar .toolbar-button {
+    padding: 0 3px;
+    margin: 0 3px !important;
+    background-color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 12px;
+}
+
+#delete, #superset, #circuit, #interval {
+    min-height: 14px;
+    max-height: 14px;
+    line-height: 14px;
+    min-width: auto;
+}
+
+#create-workout-dialog .anatomy-placeholder {
+    color: #999999;
+    padding: 10px;
+    text-align: center;
+}
+
+#create-workout-dialog .workout-part {
+    border: solid 1px #51bcf3;
+    background-color: #f7fcff;
+    border-radius: 3px;
+    margin: 3px;
+    padding: 3px;
+    font-size: 11px;
+}
+
+#create-workout-dialog .workout-type-row {
+    height: 25px;
+}
+
+#create-workout-dialog .workout-type-row .rounds {
+    padding-left: 8px;
+}
+
+#create-workout-dialog .workout-part .part-type {
+    padding-bottom: 3px;
+    margin-left: 5px;
+}
+
+#create-workout-dialog .workout-part .segment {
+    height: 25px;
+}
+
+#create-workout-dialog .workout-part input {
+    height: 20px;
+}
+
+#create-workout-dialog .workout-part .part-name {
+    padding-top: 3px;
+    overflow: hidden;
+}
+
+#create-workout-dialog .workout-part img {
+    margin: 0 5px;
+}
+
+#create-workout-dialog .workout-anatomy .dndDraggingSource {
+    display: none;
+}
+
+#create-workout-dialog .workout-anatomy .dndPlaceholder {
+    background-color: #ddd !important;
+    display: block;
+    min-height: 30px;
+}
+
+#create-workout-dialog .workout-anatomy .hidden-x {
+/*    visibility: hidden;*/
+    display:none;
+}
+
+#create-workout-dialog .workout-anatomy .x {
+    margin: 0 3px;
+    padding-top: 8px;
+}

@@ -1,0 +1,12 @@
+#create-exercise-dialog {
+    min-width: 40%;
+}
+
+#create-exercise-dialog .dialog-title {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#create-exercise-dialog .input-label-text {
+    padding-top: 30%;
+}
