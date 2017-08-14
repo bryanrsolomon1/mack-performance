@@ -7,8 +7,10 @@
 
         self.navigators = Navigator.navigators;
         self.select = select;
+        
         self.selectedNavigator = Navigator.selectedNavigator;
-
+        self.loginNavigator = Navigator.loginNavigator;
+        
         function select(navigator) {
             $state.go(navigator.state);
         }

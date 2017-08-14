@@ -5,3 +5,4 @@ dist.dev/
 dist.pro/
 config/local.env.json
 .DS_Store
+lambdas/*.zip

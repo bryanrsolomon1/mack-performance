@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    function Youtube($http, $cacheFactory, $q, API_SERVER, ENVIRONMENT, ENVIRONMENT_TYPES) {
+    function Youtube($http, $cacheFactory, $q, API_SERVER, USE_TEST_DATA) {
 
         var youtubeCache = $cacheFactory("youtube");
         
@@ -19,7 +19,7 @@
         };
                 
         function getPlaylistsByChannelId(channelId) {
-            if (ENVIRONMENT === ENVIRONMENT_TYPES.BETA) {
+            if (USE_TEST_DATA) {
                 return $q(function(resolve) {
                     resolve(playlistsTestData);
                 });
@@ -37,7 +37,7 @@
         }
         
         function getPlaylistItems(playlistId) {
-            if (ENVIRONMENT === ENVIRONMENT_TYPES.BETA) {
+            if (USE_TEST_DATA) {
                 return $q(function(resolve) {
                     resolve(playlistItemsTestData);
                 });
@@ -55,15 +55,21 @@
         }
         
         function getVideos(videoIds) {
-             return $http({
-                 url: API_SERVER + "/youtube/videos",
-                 cache: youtubeCache,
-                 params: {videoIds: videoIds.join(",")}
-             }).then(function (response) {
-                 return response.data;
-             }, function (err) {
-                 console.error(err);
-             });
+            if (USE_TEST_DATA) {
+                return $q(function(resolve) {
+                    resolve([]);
+                });
+            } else {
+                 return $http({
+                     url: API_SERVER + "/youtube/videos",
+                     cache: youtubeCache,
+                     params: {videoIds: videoIds.join(",")}
+                 }).then(function (response) {
+                     return response.data;
+                 }, function (err) {
+                     console.error(err);
+                 });
+            }
         }
     }
 

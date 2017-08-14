@@ -4,17 +4,25 @@
             <span>{{ Login.alertMessage }}</span>
         </div>
     </md-toolbar>
-    <form ng-submit="Login.submit(Login.newUser)">
+    <form ng-submit="Login.submit(Login.user)">
         <div class="login-modal" layout="column">
             <md-input-container id="username">
-                <label>Username</label>
-                <input required ng-model="Login.newUser.username"/>
+                <label>Email address</label>
+                <input required ng-model="Login.user.emailAddress"/>
             </md-input-container>
             <md-input-container id="password">
                 <label>Password</label>
-                <input required type="password" ng-model="Login.newUser.password"/>
+                <input required type="password" ng-model="Login.user.password"/>
             </md-input-container>
             <md-button class="dcx-blue text-white" type="submit">Log in</md-button>
         </div>
     </form>
+    
+<!--
+    <div>
+        <div class="login-modal" layout="column">
+            <md-button ng-click="Login.googleLogin()">Login with Google</md-button>
+        </div>
+    </div>
+-->
 </div>

@@ -4,16 +4,14 @@
     function ExercisesCtrl(Youtube, $mdDialog, Exercises) {
         
         var self = this;
-        
-        var fakeTrainerId = "1";
-        
+                
         self.watchVideo = Exercises.watchVideo;
         self.create = create;
         
-        downloadExercises(fakeTrainerId);
+        downloadExercises();
         
-        function downloadExercises(trainerId) {
-            Exercises.getExercisesByTrainerId(trainerId).then(function(data) {
+        function downloadExercises() {
+            Exercises.getExercises().then(function(data) {
                 self.exercises = data;
             });
         }
@@ -29,7 +27,7 @@
                     clickOutsideToClose: false
                 }
             ).then(function() {
-                downloadExercises(fakeTrainerId);
+                downloadExercises();
             });
         }
     }

@@ -24,35 +24,12 @@
                 templateUrl: "app/components/root/root.html",
                 controller: "RootCtrl as Root"
             })
-            //            .state("root.login", {
-            //                url: "login",
-            //                views: {
-            //                    page: {
-            //                        templateUrl: "app/components/login/login.html",
-            //                        controller: "LoginCtrl as Login"
-            //                    }
-            //                },
-            //                params: {
-            //                    alertMessage: null
-            //                },
-            //                onEnter: function(Session, Idle) {
-            //                    angular.element(document).find("body").addClass("login-background");
-            //                    Session.destroy();
-            //                    Idle.unwatch();
-            //                },
-            //                onExit: function() {
-            //                    angular.element(document).find("body").removeClass("login-background");
-            //                }
-            //            })
             .state("root.main", {
                 abstract: true,
                 views: {
                     page: {
                         templateUrl: "app/components/main/main.html"
                     }
-                },
-                onEnter: function (Idle) {
-                    Idle.watch();
                 }
             })
             .state("root.main.body", {
@@ -112,12 +89,12 @@
                 controller: "TrainWithMeCtrl as TrainWithMe"
             })
             .state(STATES.TRAINER.MAIN, {
-                url: "trainer/:trainerId",
+                url: "trainer",
                 templateUrl: "app/components/trainer/trainer.html",
                 controller: "TrainerCtrl as Trainer"
             })
             .state(STATES.CLIENT, {
-                url: "client/:clientId",
+                url: "client",
                 templateUrl: "app/components/client/client.html",
                 controller: "ClientCtrl as Client"
             });

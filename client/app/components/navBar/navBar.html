@@ -5,5 +5,8 @@
         <div class="navigator-item" ng-class="{active : NavBar.selectedNavigator === navigator }" ng-repeat="navigator in NavBar.navigators" ng-click="NavBar.select(navigator)">
             <div class="navigator-name">{{ navigator.name }}</div>
         </div>
+        <div class="navigator-item" ng-class="{active : NavBar.selectedNavigator === NavBar.loginNavigator }" ng-click="NavBar.select(NavBar.loginNavigator)">
+            <div class="navigator-name">{{ NavBar.loginNavigator.name }}</div>
+        </div>
     </div>
 </md-toolbar>

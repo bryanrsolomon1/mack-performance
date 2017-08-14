@@ -10,6 +10,10 @@
         .constant("ENVIRONMENT_TYPES", {
             BETA: "beta",
             PROD: "prod"
+        })
+        .constant("USE_TEST_DATA", false)
+        .constant("COOKIES", {
+            SESSION_TOKEN: "session-token"
         });
     
 })();

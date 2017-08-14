@@ -1,48 +1,38 @@
-/**
- * TODO: Will be where we call to the server to do authentication. Currently hardcoded to make "kristina" and "7" admins
- * and any other user an "editor"
- */
 (function(){
     "use strict";
 
-    function AuthFactory(API_SERVER, Logger, $http, Session, $q){
+    function AuthFactory(API_SERVER, Logger, $http, Session, $q, $cookies, COOKIES){
 
         var logger = new Logger("AuthFactory");
-
+        
         return {
             login: login,
             isAuthenticated: isAuthenticated,
             isAuthorized: isAuthorized
         };
 
-        function login(username, password){
-            return $http
-                .post({
-                          url: API_SERVER + '/login',
-                          params: {
-                              username: username,
-                              password: password
-                          }
+        function login(emailAddress, password){
+            return $http({
+                        method: "POST",
+                        url: API_SERVER + '/users/login/plain',
+                        data: {
+                          emailAddress: emailAddress,
+                          password: password
+                        }
                       })
-                .then(function(response){
-                    Session.create(response.data.id, response.data.user.id,
-                                   response.data.user.role);
-                    return response.data.user;
-                  });
-            var deferred = $q.defer();
-            if(username !== "kristina") {
-                Session.create(Math.random(), username,
-                               username === "7" ? "admin" : "editor");
-                deferred.resolve();
-            } else {
-                if(password !== "kristina") {
-                    deferred.reject("Password incorrect for the given user.");
-                } else {
-                    Session.create(Math.random(), username, "admin");
-                }
-            }
-            return deferred.promise;
-
+                    .then(function(response){
+                        if (response.data.token) {
+                            console.log("Saving new session token cookie:", response.data.token);
+                            $cookies.put(COOKIES.SESSION_TOKEN, response.data.token);
+                        }
+                        /* create a new Session */
+                        Session.create(response.data.user);
+                        /* configure all requests to the backend to supply the token as a header */
+                        $http.defaults.headers.common.Authorization = "Bearer " + response.data.token;
+                        return response.data;
+                    }, function(err) {
+                        return err;
+                    });
         }
 
         /** is the user logged in? */

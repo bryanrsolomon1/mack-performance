@@ -1,21 +1,24 @@
 (function() {
     "use strict";
 
-    function ClientsCtrl(Clients) {
+    function ClientsCtrl(Clients, Session, $mdDialog) {
         
         var self = this;
-        
-        var fakeTrainerId = "1";
         
         self.menuItems = menuItems();
         
         self.selectClient = selectClient;
         self.deselectClient = deselectClient;
         self.selectMenuItem = selectMenuItem;
+        self.addClient = addClient;
         
-        Clients.getClients(fakeTrainerId).then(function(response) {
-            self.clients = response.clients;
-        });
+        downloadClients(Session.trainerId);
+        
+        function downloadClients(trainerId) {
+            Clients.getClients(trainerId).then(function(data) {
+                self.clients = data;
+            });
+        }
         
         selectMenuItem(self.menuItems[0]);
         
@@ -43,6 +46,21 @@
                     name: "Calendar"
                 }
             ];
+        }
+        
+        function addClient() {
+            $mdDialog.show(
+                {
+                    templateUrl: "app/components/trainer/clients/addClientDialog.html",
+                    locals: {},
+                    bindToController: true,
+                    controller: "AddClientCtrl",
+                    controllerAs: "Add",
+                    clickOutsideToClose: false
+                }
+            ).then(function() {
+                downloadClients(Session.trainerId);
+            });
         }
     }
     

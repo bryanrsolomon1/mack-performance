@@ -54,7 +54,7 @@
 }
 
 #home .post-body {
-    max-height: 400px;
+    max-height: 200px;
     overflow-y: hidden;
     font-size: 16px;
 }

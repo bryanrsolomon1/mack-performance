@@ -2,6 +2,9 @@
     <md-toolbar>
         <!-- in view initially -->
         <div class="md-toolbar-tools" ng-hide="Clients.selectedClient" layout>
+              <md-button aria-label="open New menu" ng-click="Clients.addClient()">
+                Add Client
+              </md-button>
             <span flex></span>
             <md-input-container>
                 <label>Search</label>

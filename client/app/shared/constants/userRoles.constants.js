@@ -4,9 +4,9 @@
 
     angular.module("mack")
            .constant("USER_ROLES", {
-               ADMIN: "admin",
-               EDITOR: "editor",
-               GUEST: "guest"
+               ADMIN: "ADMIN",
+               TRAINER: "TRAINER",
+               CLIENT: "CLIENT"
            });
 
 })();

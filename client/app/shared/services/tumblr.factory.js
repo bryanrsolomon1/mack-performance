@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    function Tumblr($http, $cacheFactory, $q, API_SERVER, ENVIRONMENT, ENVIRONMENT_TYPES) {
+    function Tumblr($http, $cacheFactory, $q, API_SERVER, USE_TEST_DATA) {
 
         var blogsCache = $cacheFactory("blog");
 
@@ -161,49 +161,49 @@
         };
 
         function getRecentPosts() {
-            return getPosts(5);
+            return getPosts(4);
         }
         
         function getPosts(limit, page) {
-            if (ENVIRONMENT === ENVIRONMENT_TYPES.BETA) {
+            if (USE_TEST_DATA) {
                 return $q(function(resolve) {
                     resolve(testRecentPostsData);
                 });
             } else {
-            var params = {};
-            if (limit) {
-                params.limit = limit;
-            }
-            if (page) {
-                params.offset = 8 * page;
-            }
-             return $http({
-                 url: API_SERVER + "/blog/posts",
-                 params: params,
-                 cache: blogsCache
-             }).then(function (response) {
-                 return response.data;
-             }, function (err) {
-                 console.error(err);
-             });
+                var params = {};
+                if (limit) {
+                    params.limit = limit;
+                }
+                if (page) {
+                    params.offset = 8 * page;
+                }
+                 return $http({
+                     url: API_SERVER + "/blog/posts",
+                     params: params,
+                     cache: blogsCache
+                 }).then(function (response) {
+                     return response.data;
+                 }, function (err) {
+                     console.error(err);
+                 });
             }
         }
         
         function getPost(id) {
-            if (ENVIRONMENT === ENVIRONMENT_TYPES.BETA) {
+            if (USE_TEST_DATA) {
                 return $q(function(resolve) {
                     resolve(testRecentPostsData);
                 });
             } else {
-             return $http({
-                 url: API_SERVER + "/blog/posts",
-                 params: {"id" : id},
-                 cache: blogsCache
-             }).then(function (response) {
-                 return response.data;
-             }, function (err) {
-                 console.error(err);
-             });
+                 return $http({
+                     url: API_SERVER + "/blog/posts",
+                     params: {"id" : id},
+                     cache: blogsCache
+                 }).then(function (response) {
+                     return response.data;
+                 }, function (err) {
+                     console.error(err);
+                 });
             }
         }
     }

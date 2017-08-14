@@ -29,20 +29,20 @@
             <div class="workout-part" ng-repeat="part in Workouts.selectedWorkout.parts" ng-switch on="part.type">
                 <div ng-switch-when="SET" layout class="set">
                     <div class="name-and-description" layout="column">
-                        <div class="part-name">{{part.segments[0].name}}</div>
-                        <div class="part-description">{{part.segments[0].description}}</div>
+                        <div class="segment-name">{{part.segments[0].name}}</div>
+                        <div class="segment-description">{{part.segments[0].description}}</div>
                     </div>
                     <span flex></span>
                     <img class="cursor-pointer" ng-src="{{part.segments[0].thumbnailUrl}}" height="122" width="160" ng-click="Workouts.watchVideo(part.segments[0])"/>
                 </div>
-                <div ng-switch-when="SUPERSET">
-                    Hello from superset
-                </div>
-                <div ng-switch-when="CIRCUIT">
-                    Hello from circuit
-                </div>
-                <div ng-switch-when="INTERVAL">
-                    Hello from interval
+                <div ng-switch-when="SUPERSET|CIRCUIT|INTERVAL" ng-switch-when-separator="|" class="multi-segment" layout="column">
+                    <div class="multi-title">{{part.type}} of {{part.multiplier}} rounds</div>
+                    <div ng-repeat="segment in part.segments" layout class="segment">
+                        <img class="cursor-pointer" ng-src="{{segment.thumbnailUrl}}" height="36" width="48" ng-click="Workouts.watchVideo(segment)"/>
+                        <div class="segment-name" flex="25">{{segment.name}}</div>
+                        <div class="multiplier" flex="10">{{part.multiplier}}</div>
+                        <div class="target" flex>{{segment.target}}</div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -4,9 +4,7 @@
     function WorkoutsCtrl(Workouts, $mdDialog, WORKOUTS, Exercises) {
         
         var self = this;
-        
-        var fakeTrainerId = "1";
-        
+                
         self.sidenavName = "trainer-workouts-sidenav";
         self.WORKOUTS = WORKOUTS;
         
@@ -15,10 +13,10 @@
         self.watchVideo = Exercises.watchVideo;
         
         /* initial download */
-        downloadWorkouts(fakeTrainerId);
+        downloadWorkouts();
         
-        function downloadWorkouts(trainerId) {
-            Workouts.getWorkoutsByTrainerId(trainerId).then(function(data) {
+        function downloadWorkouts() {
+            Workouts.getWorkouts().then(function(data) {
                 self.workouts = data;
                 
                 if (self.workouts.length >= 1) {
@@ -32,15 +30,13 @@
         }
         
         function create() {
-            $mdDialog.show(
-                {
-                    templateUrl: "app/components/trainer/workouts/workoutTypeDialog.html",
+            $mdDialog.show({
+                    templateUrl: "app/components/trainer/workouts/createWorkoutDialog.html",
                     locals: {},
                     bindToController: true,
-                    controller: "WorkoutTypeCtrl as WT"
-                }
-            ).then(function() {
-                downloadWorkouts(fakeTrainerId);
+                    controller: "CreateWorkoutCtrl as CW"
+            }).then(function() {
+                downloadWorkouts();
             })
         }
     }

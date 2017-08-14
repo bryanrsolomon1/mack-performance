@@ -2,17 +2,28 @@
 (function(){
     "use strict";
 
-    function Navigator(STATES, $location){
+    function Navigator(STATES, $location, $localStorage){
 
         var self = this;
+        
+        self.loginNavigator = defaultLoginNavigator();
+        
+        /* check if user was previously logged in */
+        if ($localStorage.firstName) {
+            self.loginNavigator.name = $localStorage.firstName;
+        }
         
         self.calculateSelected = function(){
             var selected = $location.url();
             self.navigators.forEach(function(navigator) {
-                if (selected.indexOf(navigator.url) >= 0) {
+                if (selected.indexOf(navigator.url) !== -1) {
                     self.selectedNavigator = navigator;
                 }
-            })
+            });
+            
+            if (selected.indexOf(self.loginNavigator.url) !== -1) {
+                self.selectedNavigator = self.loginNavigator;
+            }
         };
         
         self.navigators = [
@@ -27,12 +38,16 @@
             { name: "blog",
               url: "/blog",
               state: STATES.BLOG
-            },
-            { name: "login",
-              url: "/login",
-              state: STATES.LOGIN
             }
         ];
+        
+        function defaultLoginNavigator() {
+            return {
+                name: "login",
+                url: "/login",
+                state: STATES.LOGIN
+            };
+        }
     }
 
     angular.module("mack")
