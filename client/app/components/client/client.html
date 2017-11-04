@@ -1,1 +1,15 @@
-Hello from clients
+<div id="client" flex layout="column">
+    <!-- buttons -->
+    <div class="client-buttons" layout>
+        <div class="client-menu-items" layout>
+             <div class="client-menu-item" ng-class="{active : Client.selectedMenuItem === menu }" ng-repeat="menu in Client.menuItems" ng-click="Client.selectMenuItem(menu)">
+                 {{menu.name}}
+              </div>
+        </div>
+    </div>
+    
+    <div layout="column" flex>
+        <div ui-view layout="column" flex></div>
+    </div>
+    
+</div>

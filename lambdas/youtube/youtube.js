@@ -14,7 +14,8 @@ module.exports.getPlaylistItems = function(event) {
     service.playlistItems.list({
         auth: API_KEY,
         playlistId: event.queryStringParameters.playlistId,
-        part: 'id,snippet'
+        part: 'id,snippet',
+        maxResults: 50
     }, function(err, response) {
         if (err) {
             deferred.reject(err);

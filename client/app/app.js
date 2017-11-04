@@ -12,10 +12,12 @@
             'dndLists',
             'googleplus',
             'ngCookies',
-            'ngStorage'
+            'ngStorage',
+            'ui.calendar',
+            'multipleDatePicker'
         ])
         .config(
-            function(ENVIRONMENT, ENVIRONMENT_TYPES, $logProvider, GooglePlusProvider){
+            function(ENVIRONMENT, ENVIRONMENT_TYPES, $logProvider, GooglePlusProvider, $httpProvider){
 
                 /** this sets whether $log.debug message should be displayed. We only want to display said messages
                  * in a development environment. Most logs should be debug logs. Logs that you want displayed in
@@ -26,6 +28,18 @@
                 GooglePlusProvider.init({
                     clientId: '4748194119-k0un4gt3utos3u40vrn2sbnvbbfuppa0.apps.googleusercontent.com',
                     apiKey: 'YOUR_API_KEY'
+                });
+                
+                $httpProvider.interceptors.push(function($q, $state, STATES) {
+                    return {
+                        'responseError': function(rejection) {
+                            if (rejection.status === 401) {
+                                $state.go(STATES.LOGIN, {message: "Your session has expired. Please login"});
+                                console.log("Login refresh required to call:", rejection.config.url);
+                            }
+                            return $q.reject(rejection);
+                        }
+                    };
                 });
             })
         .run(function($rootScope, $transitions, $http, $cookies, COOKIES){

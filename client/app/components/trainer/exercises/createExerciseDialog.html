@@ -31,7 +31,7 @@
             <!-- choose youtube channel -->
             <md-input-container>
               <label>Youtube Channel</label>
-              <md-select ng-model="Create.channelId" md-on-close="Create.getPlaylistsByChannelId(Create.channelId)">
+              <md-select ng-model="Create.exercise.channelId" md-on-close="Create.getPlaylistsByChannelId(Create.exercise.channelId)">
                 <md-option ng-value="null"><em>---</em></md-option>
                 <md-option ng-repeat="channel in Create.channels" ng-value="channel.id">
                   {{channel.name}}
@@ -42,7 +42,7 @@
             <!-- choose youtube playlist -->
             <md-input-container>
               <label>Playlist</label>
-              <md-select ng-model="Create.playlistId" md-on-close="Create.getPlaylistItems(Create.playlistId)" ng-disabled="!Create.channelId">
+              <md-select ng-model="Create.exercise.playlistId" md-on-close="Create.getPlaylistItems(Create.exercise.playlistId)" ng-disabled="!Create.exercise.channelId">
                 <md-option ng-value="null"><em>---</em></md-option>
                 <md-option ng-repeat="playlist in Create.playlists" ng-value="playlist.id">
                   {{playlist.snippet.title}}
@@ -53,7 +53,7 @@
             <!-- choose youtube video -->
             <md-input-container>
               <label>Video</label>
-              <md-select ng-model="Create.exercise.videoId" ng-disabled="!Create.playlistId">
+              <md-select ng-model="Create.exercise.videoId" ng-disabled="!Create.exercise.playlistId">
                 <md-option ng-value="null"><em>---</em></md-option>
                 <md-option ng-repeat="video in Create.videos" ng-value="video.snippet.resourceId.videoId">
                   {{video.snippet.title}}

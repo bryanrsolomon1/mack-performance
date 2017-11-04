@@ -7,7 +7,7 @@
     opacity: 0.7;
 }
 
-#trainer-exercises .exercise-thumbnail:hover {
+#trainer-exercises .exercise-thumbnail.active, #trainer-exercises .exercise-thumbnail:hover {
     border-radius: 3px;
     color: deepskyblue;
     opacity: 1.0;

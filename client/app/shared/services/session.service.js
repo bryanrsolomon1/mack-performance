@@ -2,26 +2,16 @@
 (function(){
     "use strict";
 
-    function Session($localStorage){
+    function Session($localStorage, $rootScope, BROADCASTS){
         
-        this.create = function(user){
-            if (user.firstName) {
-                this.firstName = user.firstName;
-            }
-            if (user.lastName) {
-                this.lastName = user.lastName;
-            }
-            if (user.userRole) {
-                this.userRole = user.userRole;
-            }
-            if (user.userId) {
-                this.userId = user.userId;
-            }
-            if (user.thumbnailUrl) {
-                this.thumbnailUrl = user.thumbnailUrl;
-            }
+        var self = this;
+        
+        self.create = function(user){
+            
+            _.assign(self, user);
             
             $localStorage.$default(user);
+            $rootScope.$broadcast(BROADCASTS.SESSION_CREATED, user);
         };
 
         this.destroy = function(){

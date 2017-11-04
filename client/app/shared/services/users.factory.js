@@ -1,20 +1,25 @@
 (function() {
     "use strict";
     
-    function Users($http, API_SERVER, $cacheFactory, $q, ENVIRONMENT, ENVIRONMENT_TYPES) {
+    function Users($http, API_SERVER, $cacheFactory, $q) {
         
-        var clientCache = $cacheFactory("clients");
+        var usersCache = $cacheFactory("users");
         
         return {
+            clearCache: clearCache,
             addUser: addUser,
-            batchGetUsers: batchGetUsers
+            batchGetClients: batchGetClients
         };
+        
+        function clearCache() {
+            usersCache.removeAll();
+        }
         
         function addUser(newUser) {
             return $http({
                  method: "POST",
-                 url: API_SERVER + "/user",
-                 data: {newUser: angular.toJson(newUser)}
+                 url: API_SERVER + "/users",
+                 data: angular.toJson(newUser)
              }).then(function (response) {
                  return response.data;
              }, function (err) {
@@ -22,15 +27,15 @@
              });
         }
         
-        function batchGetUsers(userEmails) {
+        function batchGetClients() {
             return $http({
-                     url: API_SERVER + "/users/" + usersEmail,
-                     cache: usersCache
-                 }).then(function (response) {
-                     return response.data;
-                 }, function (err) {
-                     console.error(err);
-                 });
+                url: API_SERVER + "/users",
+                cache: usersCache
+             }).then(function (response) {
+                 return response.data;
+             }, function (err) {
+                 console.error("Users factory:\n", err);
+             });
         }
     }
     

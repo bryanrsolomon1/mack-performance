@@ -23,6 +23,10 @@
             .state(STATES.TRAINER.WORKOUTS, {
                     templateUrl: "app/components/trainer/workouts/workouts.html",
                     controller: "WorkoutsCtrl as Workouts"
+            })
+            .state(STATES.TRAINER.TRAINING_PLAN_TEMPLATES, {
+                    templateUrl: "app/components/trainer/trainingPlanTemplate/trainingPlanTemplate.html",
+                    controller: "TrainingPlanTemplateCtrl as Training"
             });
     }
 

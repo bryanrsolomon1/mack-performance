@@ -8,31 +8,50 @@
         return {
             login: login,
             isAuthenticated: isAuthenticated,
-            isAuthorized: isAuthorized
+            isAuthorized: isAuthorized,
+            reset: reset
         };
 
         function login(emailAddress, password){
             return $http({
-                        method: "POST",
-                        url: API_SERVER + '/users/login/plain',
-                        data: {
-                          emailAddress: emailAddress,
-                          password: password
-                        }
-                      })
-                    .then(function(response){
-                        if (response.data.token) {
-                            console.log("Saving new session token cookie:", response.data.token);
-                            $cookies.put(COOKIES.SESSION_TOKEN, response.data.token);
-                        }
-                        /* create a new Session */
-                        Session.create(response.data.user);
-                        /* configure all requests to the backend to supply the token as a header */
-                        $http.defaults.headers.common.Authorization = "Bearer " + response.data.token;
-                        return response.data;
-                    }, function(err) {
-                        return err;
-                    });
+                method: "POST",
+                url: API_SERVER + '/login/plain',
+                data: {
+                    emailAddress: emailAddress,
+                    password: password
+                }
+            })
+            .then(function(response){
+                configureSessionToken(response);
+                
+                return response.data;
+            }, function(response) {
+                return $q.reject(response.data.message);
+            });
+        }
+        
+        function reset(passwordObj) {
+            return $http({
+                method: "POST",
+                url: API_SERVER + '/login/reset',
+                data: passwordObj
+            })
+            .then(function(response){
+                configureSessionToken(response);
+                return response.data;
+            }, function(err) {
+                return err;
+            });
+        }
+        
+        function configureSessionToken(response) {
+            if (response.data.token && response.data.user) {
+                    $cookies.put(COOKIES.SESSION_TOKEN, response.data.token);
+                    /* create a new Session */
+                    Session.create(response.data.user);
+                    /* configure all requests to the backend to supply the token as a header */
+                    $http.defaults.headers.common.Authorization = "Bearer " + response.data.token;
+            }
         }
 
         /** is the user logged in? */

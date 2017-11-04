@@ -1,16 +1,27 @@
 (function() {
     
-    function CreateExerciseCtrl($mdDialog, Youtube, Exercises){
+    function CreateExerciseCtrl($mdDialog, Youtube, Generic, EXERCISES){
                         
         var self = this;
+        var url = EXERCISES.URL;
         
-        self.exercise = {};
         self.channels = [
             {
                 name: "MackPerformance",
                 id: "UCZtNRp4ocEGOHOJ3USQYeAQ"
             }
         ];
+        
+        if (!self.exercise.channelId) {
+            /* select first since we only have one */
+            self.exercise.channelId = self.channels[0].id;
+            getPlaylistsByChannelId(self.exercise.channelId);
+        } else {
+            getPlaylistsByChannelId(self.exercise.channelId);
+            if (self.exercise.playlistId) {
+                getPlaylistItems(self.exercise.playlistId);
+            }
+        }
         
         self.cancel = cancel;
         self.getPlaylistsByChannelId = getPlaylistsByChannelId;
@@ -48,12 +59,11 @@
                     var video = data[0];
                     exercise.thumbnailUrl = video.snippet.thumbnails.default.url;
                     exercise.player = video.player.embedHtml;
-                    Exercises.saveExercise(exercise).then(function(response) {
-                        Exercises.clearCache();
+                    Generic.save(url, exercise).then(function(response) {
                         $mdDialog.hide();
                         var confirm = $mdDialog.confirm()
-                                      .title('Workout created!')
-                                      .ok('Great');
+                                      .title("Workout saved!")
+                                      .ok("Great");
 
                         $mdDialog.show(confirm);
                    });

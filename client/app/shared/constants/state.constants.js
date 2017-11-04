@@ -6,10 +6,12 @@
     var body = main + ".body";
     var trainer = body + ".trainer";
     var trainerClients = trainer + ".clients";
+    var client = body + ".client";
 
     angular.module("mack")
         .constant("STATES", {
             LOGIN: body + ".login",
+            PASSWORD_RESET: body + ".reset",
             HOME: body + ".home",
             BLOG: body + ".blog",
             BLOG_SLUG: body + ".blog-slug",
@@ -25,8 +27,15 @@
                     MEAL_PLAN: trainerClients + ".mealPlan",
                     CALENDAR: trainerClients + ".calendar"
                 },
-                MESSAGES: trainer + ".messages"
+                MESSAGES: trainer + ".messages",
+                TRAINING_PLAN_TEMPLATES: trainer + ".trainingPlanTemplate"
             },
-            CLIENT: body + ".client"
+            CLIENT: {
+                MAIN: client,
+                OVERVIEW: client + ".overview",
+                CALENDAR: client + ".calendar",
+                TRAINING_PLAN: client + ".trainingPlan",
+                MEAL_PLAN: client + ".mealPlan",
+            }
         });
 })();

@@ -1,4 +1,4 @@
-<div id="trainer-clients" flex>
+<div id="trainer-clients" layout="column" flex>
     <md-toolbar>
         <!-- in view initially -->
         <div class="md-toolbar-tools" ng-hide="Clients.selectedClient" layout>
@@ -25,7 +25,7 @@
     </md-toolbar>
     
     <!-- in view initially -->
-    <div layout="column" ng-hide="Clients.selectedClient">
+    <div layout="column" flex ng-hide="Clients.selectedClient">
         <div ng-repeat="client in Clients.clients" layout layout-padding class="client-list-item" ng-click="Clients.selectClient(client)">
             <img class="user-avatar" ng-src="{{client.thumbnailUrl}}"/>
             <div class="client-list-text">{{ client.firstName }} {{ client.lastName }}</div>
@@ -39,6 +39,6 @@
         <div class="client-menu-items" layout>
             <div class="client-menu-item" ng-class="{active : Clients.selectedMenuItem === menu }" ng-repeat="menu in Clients.menuItems" ng-click="Clients.selectMenuItem(menu)">{{menu.name}}</div>
         </div>
-        <div ui-view></div>
+        <div ui-view layout="column" flex></div>
     </div>
 </div>

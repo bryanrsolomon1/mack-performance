@@ -12,8 +12,8 @@
            the message "You have been logged out." gets passed here as a stateParam. See Navbar controller for that
             exact example
          */
-        if ($stateParams.alertMessage) {
-            self.alertMessage = $stateParams.alertMessage;
+        if ($stateParams.message) {
+            self.message = $stateParams.message;
         }
 
         /**
@@ -29,7 +29,7 @@
                                 $state.go(STATES.CLIENT.MAIN);
                             }
                        }, function(errMessage) {
-                           self.alertMessage = errMessage;
+                           self.message = errMessage;
                        });
         }
         

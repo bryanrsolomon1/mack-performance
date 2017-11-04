@@ -4,11 +4,9 @@
 (function(){
     "use strict";
 
-    function RootCtrl(LOGOUT_WARNING_SECONDS){
+    function RootCtrl(){
         
-        var self = this;
-        
-        self.logoutWarningSeconds = LOGOUT_WARNING_SECONDS;
+        var self = this
     }
 
     angular.module("mack")

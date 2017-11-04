@@ -42,6 +42,11 @@
                     "name": "Workouts",
                     "icon": "fa-computer",
                     "state": STATES.TRAINER.WORKOUTS
+                },
+                {
+                    "name": "Plan Templates",
+                    "icon": "fa-computer",
+                    "state": STATES.TRAINER.TRAINING_PLAN_TEMPLATES
                 }
             ]
         }

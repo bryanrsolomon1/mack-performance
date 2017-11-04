@@ -2,7 +2,7 @@
 (function(){
     "use strict";
 
-    function Navigator(STATES, $location, $localStorage){
+    function Navigator(STATES, $location, $localStorage, $rootScope, BROADCASTS){
 
         var self = this;
         
@@ -12,6 +12,10 @@
         if ($localStorage.firstName) {
             self.loginNavigator.name = $localStorage.firstName;
         }
+        
+        $rootScope.$on(BROADCASTS.SESSION_CREATED, function(event, user) {
+            self.loginNavigator.name = user.firstName;
+        });
         
         self.calculateSelected = function(){
             var selected = $location.url();

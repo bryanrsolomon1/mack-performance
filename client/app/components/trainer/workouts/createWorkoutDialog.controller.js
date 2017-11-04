@@ -1,9 +1,10 @@
 (function() {
     "use strict";
     
-    function CreateWorkoutCtrl(Exercises, $mdDialog, WORKOUTS, Workouts) {
+    function CreateWorkoutCtrl(Exercises, $mdDialog, WORKOUTS, Workouts, Generic, EXERCISES) {
         
         var self = this;
+        var url = WORKOUTS.URL;
                 
         self.workout = {parts: []};
         self.selectedParts = [];
@@ -24,14 +25,13 @@
         self.canDelete = canDelete;
         self.doDelete = doDelete;
         
-        Exercises.getExercises().then(function(data) {
+        Generic.get(EXERCISES.URL).then(function(data) {
             self.exercises = data;
         });
         
         function save(workout) {
             if (self.validWorkout(workout)) {
-                Workouts.saveWorkout(workout).then(function(response) {
-                    Workouts.clearCache();
+                Generic.save(url, workout).then(function(response) {
                     $mdDialog.hide();
                     var confirm = $mdDialog.confirm()
                                   .title('Workout created!')
@@ -46,13 +46,15 @@
         }
         
         function cancel() {
-            $mdDialog.hide();
+            $mdDialog.cancel();
         }
         
         function partDropCallback(index, item, external, type) {
             /* convert a dropped exercise into a workout 'part' */
             if (type === "exercise") {
+                
                 item.target = "";
+                
                 var part = {
                     type: WORKOUTS.TYPES.SET,
                     multiplier: 0,

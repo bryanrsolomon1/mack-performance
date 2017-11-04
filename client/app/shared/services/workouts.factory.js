@@ -1,48 +1,28 @@
 (function () {
-    'use strict';
+    "use strict";
 
-    function Workouts($http, $cacheFactory, $q, API_SERVER, USE_TEST_DATA) {
-
-        var workoutsCache = $cacheFactory("trainer-workouts");
+    function Workouts($mdDialog) {
         
         return {
-            clearCache: clearCache,
-            saveWorkout: saveWorkout,
-            getWorkouts: getWorkouts
+            displayClientWorkout: displayClientWorkout
         };
         
-        function clearCache() {
-            workoutsCache.removeAll();
-        }
-                
-        function saveWorkout(workout) {
-             return $http({
-                 url: API_SERVER + "/workouts",
-                 cache: workoutsCache,
-                 method: "POST",
-                 data: angular.toJson(workout)
-             }).then(function (response) {
-                 return response.data;
-             }, function (err) {
-                 console.error(err);
-             });
-        }
-        
-        function getWorkouts() {
-            if (USE_TEST_DATA) {
-                return $q(function(resolve) {
-                    resolve(testData);
-                });
-            } else {
-                 return $http({
-                     url: API_SERVER + "/workouts/",
-                     cache: workoutsCache
-                 }).then(function (response) {
-                     return response.data;
-                 }, function (err) {
-                     console.error(err);
-                 });
-            }
+        function displayClientWorkout(workout) {
+            $mdDialog.show(
+                {
+                    templateUrl: "app/components/clients/displayClientWorkout/displayClientWorkout.html",
+                    locals: {workout: workout},
+                    bindToController: true,
+                    controller: function($mdDialog){
+                        this.hide = function(){
+                            $mdDialog.hide();
+                        };
+                    },
+                    multiple: true,
+                    controllerAs: "Display",
+                    clickOutsideToClose: false
+                }
+            );
         }
     }
 

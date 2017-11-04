@@ -37,19 +37,6 @@ function cleanToken(token) {
     }
 }
 
-/* Example decoded token
-{
-  "password": "admin",
-  "userRole": "TRAINER",
-  "emailAddress": "mack@mackperformance.com",
-  "lastName": "Klink",
-  "userId": "4d8121c4-33f4-41a3-88c8-1811cec46e16",
-  "thumbnailUrl": "https://lh3.googleusercontent.com/-Mn7Vjxr-Nso/AAAAAAAAAAI/AAAAAAAAAJo/4nQHpyw7d4w/s120-p-rw-no/photo.jpg",
-  "firstName": "Mack",
-  "iat": 1502661099,
-  "exp": 1565734206
-}
-*/
 function generatePolicy(decodedToken) {
     var authResponse = {};
     

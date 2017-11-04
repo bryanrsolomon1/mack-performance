@@ -1,7 +1,7 @@
 (function() {
     "use strict";
 
-    function ClientsCtrl(Clients, Session, $mdDialog) {
+    function ClientsCtrl(Users, $mdDialog, STATES, $state) {
         
         var self = this;
         
@@ -12,18 +12,17 @@
         self.selectMenuItem = selectMenuItem;
         self.addClient = addClient;
         
-        downloadClients(Session.trainerId);
+        downloadClients();
         
-        function downloadClients(trainerId) {
-            Clients.getClients(trainerId).then(function(data) {
+        function downloadClients() {
+            Users.batchGetClients().then(function(data) {
                 self.clients = data;
             });
         }
-        
-        selectMenuItem(self.menuItems[0]);
-        
+                
         function selectClient(client) {
             self.selectedClient = client;
+            selectMenuItem(self.menuItems[0]);
         }
         
         function deselectClient() {
@@ -32,18 +31,22 @@
         
         function selectMenuItem(menuItem) {
             self.selectedMenuItem = menuItem;
+            $state.go(menuItem.state, {client: self.selectedClient});
         }
         
         function menuItems() {
             return [
                 {
-                    name: "Training Plan"
+                    name: "Training Plan",
+                    state: STATES.TRAINER.CLIENTS.TRAINING_PLAN
                 },
                 {
-                    name: "Meal Plan"
+                    name: "Meal Plan",
+                    state: STATES.TRAINER.CLIENTS.MEAL_PLAN
                 },
                 {
-                    name: "Calendar"
+                    name: "Calendar",
+                    state: STATES.TRAINER.CLIENTS.CALENDAR
                 }
             ];
         }
@@ -59,7 +62,7 @@
                     clickOutsideToClose: false
                 }
             ).then(function() {
-                downloadClients(Session.trainerId);
+                downloadClients();
             });
         }
     }

@@ -12,6 +12,15 @@ module.exports.handler = function(event, context, callback) {
             callback(err);
         });
         
+    } else if(event.pathParameters.proxy === 'reset' && event.httpMethod === 'POST') {
+        
+        login.resetPassword(event).then(function(response) {
+            callback(null, response);
+        }, function(err) {
+            console.error(JSON.stringify(err, null, 2));
+            callback(err);
+        });
+        
     } else {
         
         // log the world for debugging purposes

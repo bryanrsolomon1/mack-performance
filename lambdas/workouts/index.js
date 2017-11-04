@@ -3,14 +3,26 @@
 var workouts = require('./workouts.js');
 
 module.exports.handler = function(event, context, callback) {
-
+    
     if(event.httpMethod === 'GET') {
         
-        workouts.get(event).then(function(response) {
-            callback(null, response);
-        }, function(err) {
-            callback(err);
-        });
+        if (event.queryStringParameters) {
+            if (event.queryStringParameters.batchObjectIds) {
+                /* batch get */
+                workouts.batchGetByObjectIds(event).then(function(response) {
+                    callback(null, response);
+                }, function(err) {
+                    callback(err);
+                });
+            }
+        } else {
+            /* regular get */
+            workouts.get(event).then(function(response) {
+                callback(null, response);
+            }, function(err) {
+                callback(err);
+            });
+        }
         
     } else if(event.httpMethod === 'POST') {
         

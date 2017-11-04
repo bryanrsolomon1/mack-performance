@@ -1,10 +1,10 @@
 (function() {
     "use strict";
     
-    function TrainerClientsCalendarCtrl() {
+    function TrainerClientCalendarCtrl() {
         
     }
     
-    angular.module("mack").controller("TrainerClientsCalendarCtrl", TrainerClientsCalendarCtrl);
+    angular.module("mack").controller("TrainerClientCalendarCtrl", TrainerClientCalendarCtrl);
     
 })();

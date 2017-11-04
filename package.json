@@ -25,6 +25,7 @@
     "gulp-ng-annotate": "2.0.x",
     "gulp-ng-config": "1.4.x",
     "gulp-ng-html2js": "0.2.x",
+    "gulp-order": "^1.1.1",
     "gulp-print": "^2.0.1",
     "gulp-rename": "1.2.x",
     "gulp-uglify": "2.1.x",

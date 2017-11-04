@@ -135,3 +135,8 @@ div, i {
 .cursor-pointer {
     cursor: pointer;
 }
+
+.close-dialog {
+    cursor: pointer;
+    padding-top: 6px;
+}

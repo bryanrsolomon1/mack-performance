@@ -4,17 +4,39 @@ var exercises = require('./exercises.js');
 
 module.exports.handler = function(event, context, callback) {
 
+    console.log("Event object:\n", JSON.stringify(event, null, 2));
+
     if(event.httpMethod === 'GET') {
         
-        exercises.get(event).then(function(response) {
+        if (event.queryStringParameters) {
+            if (event.queryStringParameters.batchObjectIds) {
+                /* batch get */
+                exercises.batchGetByObjectIds(event).then(function(response) {
+                    callback(null, response);
+                }, function(err) {
+                    callback(err);
+                });
+            }
+        } else {
+            /* regular get */
+            exercises.get(event).then(function(response) {
+                callback(null, response);
+            }, function(err) {
+                callback(err);
+            });
+        }
+        
+    } else if(event.httpMethod === 'POST') {
+        
+        exercises.post(event).then(function(response) {
             callback(null, response);
         }, function(err) {
             callback(err);
         });
         
-    } else if(event.httpMethod === 'POST') {
+    } else if(event.httpMethod === 'DELETE') {
         
-        exercises.post(event).then(function(response) {
+        exercises.delete(event).then(function(response) {
             callback(null, response);
         }, function(err) {
             callback(err);

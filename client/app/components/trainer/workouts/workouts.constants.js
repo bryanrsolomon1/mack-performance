@@ -13,7 +13,8 @@
         UNITS: {
             ONE: "ONE",
             SECONDS: "SECONDS"
-        }
+        },
+        URL: "workouts"
     });
     
 })();

@@ -2,7 +2,8 @@
     <md-toolbar>
         <div class="md-toolbar-tools" layout>
             <md-button ng-click="Exercises.create()" class="md-accent md-raised">New</md-button>
-            <md-button ng-click="Exercises.create()" class="md-accent md-raised fa fa-trash"></md-button>
+            <md-button ng-click="Exercises.deleteExercise(Exercises.selectedExercise)" class="md-accent md-raised fa fa-trash"></md-button>
+            <md-button ng-click="Exercises.create(Exercises.selectedExercise)" class="md-accent md-raised fa fa-pencil" ng-disabled="!Exercises.selectedExercise"></md-button>
             <span flex></span>
             <md-input-container id="exercises-search">
                 <label><i class="fa fa-search"></i></label>
@@ -11,8 +12,8 @@
         </div>
     </md-toolbar>
     <div class="exercise-thumbnails" layout layout-padding layout-wrap>
-        <div class="exercise-thumbnail" ng-repeat="exercise in Exercises.exercises | filter: Exercises.searchFilter" ng-click="Exercises.watchVideo(exercise)" layout flex="20" ng-animate=" 'animate' ">
-            <img ng-src="{{exercise.thumbnailUrl}}" height="100" width="100"/>
+        <div class="exercise-thumbnail" ng-repeat="exercise in Exercises.exercises | filter: Exercises.searchFilter" layout flex="20" ng-click="Exercises.selectExercise(exercise)" ng-dblclick="Exercises.create(Exercises.selectedExercise)" ng-class="{active : Exercises.selectedExercise === exercise }">
+            <img ng-src="{{exercise.thumbnailUrl}}" height="100" width="100" ng-click="Exercises.watchVideo(exercise)"/>
             <div class="thumbnail-description" flex>
                 <div class="thumbnail-name">{{exercise.name}}</div>
             </div>

@@ -52,14 +52,6 @@
                 url: "home",
                 templateUrl: "app/components/home/home.html",
                 controller: "HomeCtrl as Home"
-//                data: {
-//                    authorizedRoles: [USER_ROLES.ADMIN, USER_ROLES.EDITOR]
-//                },
-//                onEnter: function(PageHeaderFactory, VCX_DEVICES_CONSTANTS) {
-//                    PageHeaderFactory.setPageHeader(VCX_DEVICES_CONSTANTS.PAGE_HEADER);
-//                    PageHeaderFactory.setPageHelpContents(VCX_DEVICES_CONSTANTS.PAGE_HEADER,
-//                    VCX_DEVICES_CONSTANTS.HELP_TEMPLATE_URL);
-//                }
             })
             .state(STATES.BLOG, {
                 url: "blog",
@@ -81,7 +73,13 @@
             .state(STATES.LOGIN, {
                 url: "login",
                 templateUrl: "app/components/login/login.html",
-                controller: "LoginCtrl as Login"
+                controller: "LoginCtrl as Login",
+                params: { message: null }
+            })
+            .state(STATES.PASSWORD_RESET, {
+                url: "reset?token",
+                templateUrl: "app/components/passwordReset/passwordReset.html",
+                controller: "PasswordResetCtrl as Password"
             })
             .state(STATES.TRAIN_WITH_ME, {
                 url: "trainWithMe",
@@ -93,7 +91,7 @@
                 templateUrl: "app/components/trainer/trainer.html",
                 controller: "TrainerCtrl as Trainer"
             })
-            .state(STATES.CLIENT, {
+            .state(STATES.CLIENT.MAIN, {
                 url: "client",
                 templateUrl: "app/components/client/client.html",
                 controller: "ClientCtrl as Client"

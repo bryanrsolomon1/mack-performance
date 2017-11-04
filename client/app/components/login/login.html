@@ -1,14 +1,14 @@
 <div id="login">
-    <md-toolbar class="login-alert" ng-show="Login.alertMessage">
+    <md-toolbar class="login-alert" ng-show="Login.message">
         <div class="md-toolbar-tools">
-            <span>{{ Login.alertMessage }}</span>
+            <span>{{ Login.message }}</span>
         </div>
     </md-toolbar>
     <form ng-submit="Login.submit(Login.user)">
         <div class="login-modal" layout="column">
             <md-input-container id="username">
                 <label>Email address</label>
-                <input required ng-model="Login.user.emailAddress"/>
+                <input required type="email" ng-model="Login.user.emailAddress"/>
             </md-input-container>
             <md-input-container id="password">
                 <label>Password</label>

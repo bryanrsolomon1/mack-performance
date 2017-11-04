@@ -41,7 +41,7 @@
                         <img class="cursor-pointer" ng-src="{{segment.thumbnailUrl}}" height="36" width="48" ng-click="Workouts.watchVideo(segment)"/>
                         <div class="segment-name" flex="25">{{segment.name}}</div>
                         <div class="multiplier" flex="10">{{part.multiplier}}</div>
-                        <div class="target" flex>{{segment.target}}</div>
+                        <div class="target" flex>{{segment.target | workoutTarget }}</div>
                     </div>
                 </div>
             </div>

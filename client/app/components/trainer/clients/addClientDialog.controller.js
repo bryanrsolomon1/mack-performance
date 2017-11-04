@@ -1,6 +1,6 @@
 (function() {
     
-    function AddClientCtrl($mdDialog, Clients, TIMEZONES, Timezones) {
+    function AddClientCtrl($mdDialog, Users, TIMEZONES, Timezones) {
                         
         var self = this;
         
@@ -21,15 +21,13 @@
         
         function save(client) {
             if (validClient(client)) {
-                Clients.addClient(client).then(function(response) {
-                    Trainers.addClientToTrainer(client.emailAddress).then(function(response) {
-                        Clients.clearCache();
-                        $mdDialog.hide();
-                        var confirm = $mdDialog.confirm()
-                                      .title('Client Added!')
-                                      .ok('Great');
-                        $mdDialog.show(confirm); 
-                    });
+                Users.addUser(client).then(function(response) {
+                    Users.clearCache();
+                    $mdDialog.hide();
+                    var confirm = $mdDialog.confirm()
+                                  .title('Client Added!')
+                                  .ok('Great');
+                    $mdDialog.show(confirm); 
                });
             }
         }
