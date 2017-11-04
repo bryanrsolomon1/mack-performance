@@ -1,0 +1,12 @@
+#client-workout-dialog {
+    height: 440px;
+    width: 70%;
+}
+
+#client-workout-dialog .close-dialog {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    color: #ada6a7;
+}

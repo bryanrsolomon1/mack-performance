@@ -1,0 +1,26 @@
+<md-dialog id="add-workouts" layout-padding>
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">Add workouts to training plan</div>
+    </md-toolbar>
+    
+    <md-dialog-content layout-padding>
+        <div class="workouts">
+            <div class="workout-thumbnails" layout layout-padding layout-wrap>
+                <div class="workout-thumbnail" ng-repeat="workout in AW.workouts" layout flex="20">
+                    <md-checkbox ng-click="AW.toggleWorkoutCheck(workout)"></md-checkbox>
+                    <img ng-src="{{workout.parts[0].segments[0].thumbnailUrl}}" height="50" width="50"/>
+                    <div class="thumbnail-description" flex>
+                        <div class="thumbnail-name">{{workout.name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </md-dialog-content>
+    
+    <md-dialog-actions>
+        <md-button ng-click="AW.addWorkouts(AW.selectedWorkouts)">Add Selected</md-button>
+        <md-button class="md-warn md-raised" ng-click="AW.cancel()">Cancel</md-button>
+    </md-dialog-actions>
+    
+</md-dialog>

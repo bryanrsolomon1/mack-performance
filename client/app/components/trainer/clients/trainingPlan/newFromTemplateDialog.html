@@ -1,0 +1,29 @@
+<md-dialog id="new-from-template" layout-padding>
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">Select a template</div>
+    </md-toolbar>
+    
+    <md-dialog-content layout-padding layout="column">
+        
+        <md-input-container>
+            <label>Training Plan Template</label>
+            <md-select ng-model="NFT.selectedTemplate">
+                <md-options>
+                    <md-option ng-repeat="template in NFT.templates" ng-value="template">{{template.name}}</md-option>
+                </md-options>
+            </md-select>
+        </md-input-container>
+        
+        <md-datepicker ng-model="NFT.selectedTemplate.startDate" md-placeholder="Start date"></md-datepicker>
+        
+        <md-datepicker ng-model="NFT.selectedTemplate.endDate" md-placeholder="End date"></md-datepicker>
+        
+    </md-dialog-content>
+
+    <md-dialog-actions>
+        <md-button class="md-primary md-raised" ng-click="NFT.save(NFT.selectedTemplate)" ng-disabled="!NFT.validTrainingPlan(NFT.selectedTemplate)">Select</md-button>
+        <md-button class="md-warn md-raised" ng-click="NFT.cancel()">Cancel</md-button>
+    </md-dialog-actions>
+    
+</md-dialog>

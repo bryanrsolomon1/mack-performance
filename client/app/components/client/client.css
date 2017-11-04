@@ -1,0 +1,19 @@
+#client .client-buttons {
+    background-color: black;
+    color: white;
+    max-height: 40px !important;
+}
+
+#client .client-menu-items {
+    height: 100%;
+}
+
+#client .client-menu-item {
+    cursor: pointer; 
+    padding: 8px;
+}
+
+#client .client-menu-item.active {
+    border-bottom: solid #3abfe0 5px;
+    padding-bottom: 3px;
+}

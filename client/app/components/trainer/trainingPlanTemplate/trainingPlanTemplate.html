@@ -1,0 +1,102 @@
+<div id="trainer-training-plan" flex layout="column">
+    
+    <md-toolbar>
+        <div class="md-toolbar-tools" layout>
+            <md-button ng-click="Training.create()" class="md-accent md-raised">New</md-button>
+            <md-button ng-click="Training.delete()" class="md-accent md-raised fa fa-trash"></md-button>
+            <span flex></span>
+            <md-input-container id="training-search">
+                <label><i class="fa fa-search"></i></label>
+                <input ng-model="Training.searchFilter"/>
+            </md-input-container>
+        </div>
+    </md-toolbar>
+    
+    <div class="training-plan-body" layout flex>
+        
+        <md-sidenav id="training-plan-sidenav" class="md-sidenav-left" md-component-id="{{Training.sidenavName}}" 
+                    md-is-locked-open="true" flex="20">
+                <div class="sidenav-item" ng-class="{active : Training.selectedTemplate === template }" layout 
+                     ng-repeat="template in Training.templates"
+                     ng-click="Training.selectTemplate(template)">
+                    <div class="sidenav-entry">{{ template.name }}</div>
+                </div>
+                <div class="filler" flex></div>
+        </md-sidenav>
+        
+        <div class="no-templates" flex layout="column" layout-padding ng-if="Training.templates.length === 0">
+            <div>You haven't built any training plan templates</div>
+            <div>Add a template using the buttons above!</div>
+        </div>
+        
+        <div class="training-plan-demo" flex layout="column" layout-padding ng-if="Training.templates.length !== 0">
+            
+            <div class="demo-title-bar" flex="15" layout>
+                
+                <div class="demo-title-column" layout="column">
+                    <div class="demo-title">{{Training.selectedTemplate.name}}</div>
+                </div>
+                
+                <span flex></span>
+                
+                <md-button class="md-primary md-raised" ng-click="Training.save(Training.selectedTemplate)" ng-disabled="!Training.dataHasChanged">
+                    Save
+                </md-button>
+                
+            </div>
+            
+            <md-divider></md-divider>
+            
+            <div class="demo-summary" flex="20" layout>
+                <md-input-container flex>
+                    <label>Training Plan Summary</label>
+                    <textarea ng-model="Training.selectedTemplate.summary"></textarea>
+                </md-input-container>
+            </div>
+            
+            <md-divider></md-divider>
+            
+            <div class="demo-workouts" layout-padding>
+                
+                <div class="demo-workouts-title-bar" layout>
+                    <div class="demo-workouts-title">Workouts in this training plan</div>
+                    <span flex></span>
+                    <md-button class="md-primary md-raised" ng-click="Training.addWorkoutsToTemplate()">Add a workout</md-button>   
+                </div>
+                
+                <div class="demo-workout" ng-repeat="workout in Training.selectedTemplate.workouts" layout>
+                    
+                    <img ng-src="{{workout.parts[0].segments[0].thumbnailUrl}}" height="130" width="180"/>
+                    
+                    <div flex="5"></div>
+                    
+                    <div class="demo-workout-info" layout="column" flex>
+                        
+                        <div class="demo-workout-title-bar" layout>
+                            <div class="demo-workout-title">{{workout.name}}</div>
+                            <span flex></span>
+                            <md-button ng-click="Training.deleteWorkout(workout)">
+                                Delete
+                            </md-button>
+                        </div>
+                        
+                        <div class="demo-workout-summary">
+                            {{workout.summary}}
+                        </div>
+                        
+                        <div class="demo-workout-exercise-summary">
+                            Exercises: 
+                            <span ng-repeat="part in workout.parts">
+                                <span ng-repeat="segment in part.segments">{{segment.name}},</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>

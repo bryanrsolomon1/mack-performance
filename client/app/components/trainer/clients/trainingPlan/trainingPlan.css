@@ -1,0 +1,41 @@
+#trainer-client-training-plan .toolbar-tools {
+    border-bottom: solid 1px black;
+}
+
+#trainer-client-training-plan .filler {
+    background-color: #d8d8d8;
+}
+
+#trainer-client-training-plan .sidenav-item {
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #d8d8d8;
+    color: black;
+    border-bottom: solid 1px black;
+}
+
+#trainer-client-training-plan .sidenav-item:hover {
+    opacity: 0.5;
+}
+
+#trainer-client-training-plan .sidenav-item.active {
+    border-left: solid #3abfe0 5px;
+    padding-left: 10px;
+    background-color: rgb(250,250,250);
+}
+
+#trainer-client-training-plan .demo-title {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#trainer-client-training-plan .demo-workouts-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#trainer-client-training-plan .demo-workout-title {
+    font-size: 20px;
+    color: rgb(30, 182, 248);
+    font-weight: bold;
+}

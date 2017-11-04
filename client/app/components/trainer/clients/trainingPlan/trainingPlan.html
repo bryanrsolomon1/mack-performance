@@ -1,0 +1,111 @@
+<div id="trainer-client-training-plan" flex layout="column">
+    
+    <div class="toolbar-tools" layout>
+        <span flex></span>
+        <md-button ng-click="TrainingPlan.create()" class="md-accent md-raised">New</md-button>
+        <md-button ng-click="TrainingPlan.createFromTemplate()" class="md-accent md-raised">New from Template</md-button>
+        <md-button ng-click="TrainingPlan.delete()" class="md-accent md-raised fa fa-trash"></md-button>
+    </div>
+    
+    <div class="training-plan-body" layout flex>
+        
+        <md-sidenav id="training-plan-sidenav" class="md-sidenav-left" md-component-id="{{TrainingPlan.sidenavName}}" 
+                    md-is-locked-open="true" flex="20">
+                <div class="sidenav-item" ng-class="{active : TrainingPlan.selectedTrainingPlan === trainingPlan }" layout 
+                     ng-repeat="trainingPlan in TrainingPlan.trainingPlans"
+                     ng-click="TrainingPlan.selectPlan(trainingPlan)">
+                    <i class="fa" ng-class="trainingPlan.icon"></i>
+                    <div class="sidenav-entry">{{ trainingPlan.name }}</div>
+                </div>
+                <div class="filler" flex></div>
+        </md-sidenav>
+        
+        <div class="training-plan-demo" flex layout="column" layout-padding ng-if="TrainingPlan.trainingPlans.length !== 0">
+            
+            <div class="demo-title-bar" flex="15" layout>
+                
+                <div class="demo-title-column" layout="column">
+                    <div class="demo-title">{{TrainingPlan.selectedTrainingPlan.name}}</div>
+                    <div class="demo-date">
+                        {{TrainingPlan.selectedTrainingPlan.startDate | date}} - {{TrainingPlan.selectedTrainingPlan.endDate | date}}
+                    </div>
+                </div>
+                
+                <span flex></span>
+                
+                <md-button class="md-primary md-raised" ng-click="TrainingPlan.save(TrainingPlan.selectedTrainingPlan)" ng-disabled="!TrainingPlan.dataHasChanged">
+                    Save
+                </md-button>
+                
+            </div>
+            
+            <md-divider></md-divider>
+            
+            <div class="demo-summary" flex="20" layout>
+                <md-input-container flex>
+                    <label>TrainingPlan Plan Summary</label>
+                    <textarea ng-model="TrainingPlan.selectedTrainingPlan.summary"></textarea>
+                </md-input-container>
+            </div>
+            
+            <md-divider></md-divider>
+            
+            <div class="demo-workouts" layout-padding>
+                
+                <div class="demo-workouts-title-bar" layout>
+                    <div class="demo-workouts-title">Workouts in this training plan</div>
+                    <span flex></span>
+                    <md-button class="md-primary md-raised" ng-click="TrainingPlan.addWorkoutsToPlan()">Add a workout</md-button>   
+                </div>
+                
+                <div class="demo-workout" ng-repeat="workout in TrainingPlan.selectedTrainingPlan.workouts" layout>
+                    
+                    <img ng-src="{{workout.parts[0].segments[0].thumbnailUrl}}" height="130" width="180"/>
+                    
+                    <div flex="5"></div>
+                    
+                    <div class="demo-workout-info" layout="column" flex>
+                        
+                        <div class="demo-workout-title-bar" layout>
+                            <div class="demo-workout-title">{{workout.name}}</div>
+                            <span flex></span>
+                            <md-button ng-click="TrainingPlan.scheduleWorkout(workout)">
+                                Schedule
+                            </md-button>
+                            <md-button ng-click="TrainingPlan.deleteWorkout(workout)">
+                                Delete
+                            </md-button>
+                        </div>
+                        
+                        <div class="demo-workout-summary">
+                            {{workout.summary}}
+                        </div>
+                        
+                        <div class="demo-workout-exercise-summary">
+                            Exercises: 
+                            <span ng-repeat="part in workout.parts">
+                                <span ng-repeat="segment in part.segments">{{segment.name}},</span>
+                            </span>
+                        </div>
+                        
+                        <div class="demo-workout-dates-summary">
+                            Scheduled: 
+                            <span ng-repeat="date in TrainingPlan.selectedTrainingPlan.calendar[workout.objectId]">
+                                {{date | date}},
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="no-training-plans" flex layout="column" layout-padding ng-if="TrainingPlan.trainingPlans.length === 0">
+            <div>There are no training plans assigned to this client!</div>
+            <div>Add a training plan using the buttons above</div>
+        </div>
+        
+    </div>
+    
+</div>

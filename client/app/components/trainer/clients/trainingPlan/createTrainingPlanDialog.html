@@ -1,0 +1,31 @@
+<md-dialog id="create-training-plan" layout-padding>
+    
+    <div class="dialog-title-bar" layout>
+        
+        <div class="dialog-title" flex>Add new training plan</div>
+        
+        <i class="fa fa-times close-dialog" ng-click="CTP.cancel()"></i>
+        
+    </div>
+    
+    <md-dialog-content layout="column" layout-padding>
+                
+        <md-input-container>
+            <label>Training Plan Name</label>
+            <input ng-model="CTP.trainingPlan.name"/>
+        </md-input-container>
+        
+        <md-datepicker ng-model="CTP.trainingPlan.startDate" md-placeholder="Start date"></md-datepicker>
+        
+        <md-datepicker ng-model="CTP.trainingPlan.endDate" md-placeholder="End date"></md-datepicker>
+        
+    </md-dialog-content>
+    
+    <md-dialog-actions>
+        <md-button class="md-primary md-raised" ng-click="CTP.save(CTP.trainingPlan)" ng-disabled="!CTP.validTrainingPlan(CTP.trainingPlan)">
+            Save
+        </md-button>
+        <md-button class="md-warn md-raised" ng-click="CTP.cancel()">Cancel</md-button>
+    </md-dialog-actions>
+    
+</md-dialog>

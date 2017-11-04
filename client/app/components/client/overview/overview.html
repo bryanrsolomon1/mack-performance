@@ -1,0 +1,23 @@
+<div id="client-overview" layout flex>
+
+    <div class="client-wall" layout="column" flex="70">
+        Hello from client wall
+    </div>
+    
+    <div class="notifications" layout="column" flex="30">
+        <div class="notification" ng-repeat="notification in CO.notifications" layout="column">
+            <div class="notification-title">
+                {{ notification.title }}
+            </div>
+            <div class="notification-content">
+                {{ notification.content }}
+            </div>
+            <div class="notification-actions">
+                <md-button ng-repeat="action in notification.actions" ng-click="CO.doAction(action)">
+                    {{ action.name }}
+                </md-button>
+            </div>
+        </div>
+    </div>
+    
+</div>

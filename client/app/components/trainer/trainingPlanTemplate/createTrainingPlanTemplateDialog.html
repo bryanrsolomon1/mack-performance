@@ -1,0 +1,29 @@
+<md-dialog id="create-training-plan-template" layout-padding>
+    
+    <div class="dialog-title-bar" layout>
+        
+        <div class="dialog-title" flex>Add new training plan template</div>
+        
+        <span flex="5"></span>
+        
+        <i class="fa fa-times close-dialog" ng-click="CTPT.cancel()"></i>
+        
+    </div>
+    
+    <md-dialog-content layout="column" layout-padding>
+                
+        <md-input-container>
+            <label>Template Name</label>
+            <input ng-model="CTPT.template.name"/>
+        </md-input-container>
+        
+    </md-dialog-content>
+    
+    <md-dialog-actions>
+        <md-button class="md-primary md-raised" ng-click="CTPT.save(CTPT.template)" ng-disabled="!CTPT.validTemplate(CTPT.template)">
+            Save
+        </md-button>
+        <md-button class="md-warn md-raised" ng-click="CTPT.cancel()">Cancel</md-button>
+    </md-dialog-actions>
+    
+</md-dialog>

@@ -1,0 +1,7 @@
+#client-overview .client-wall {
+    background-color: grey;
+    border: solid 1px black;
+}
+
+#client-overview .notifications {
+}
